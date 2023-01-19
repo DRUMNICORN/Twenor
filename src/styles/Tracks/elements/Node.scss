@@ -1,0 +1,65 @@
+@use "../../tools/ColorPallet.scss" as pallet;
+
+.track-node {
+  background: pallet.$yang-color !important;
+  border-radius: 1em;
+  border: 1px solid pallet.$yin-color !important;
+
+  color: transparent;
+  // center text
+  display: flex;
+  justify-content: center;
+
+  // next to each other
+  flex-direction: row;
+  padding-inline: 0.5em;
+
+
+  max-width: .5em;
+
+  // aspect-ratio: 1/1;
+  overflow: hidden; 
+
+  transition: all 1s ease;
+}
+
+.track-node:hover {
+  transition: all .4s ease-in-out;
+}
+
+.track-node-element {
+
+
+  overflow: hidden;
+  // next to each other
+  display: flex;
+  height: 100%;
+  min-width: 5em;
+  flex-shrink: 1;
+  flex-direction: row;
+  gap: 0.2em;
+  box-sizing: border-box;
+  margin-right: .5em;
+  border-radius: .75em;
+  float: right;
+  justify-content: right;
+
+  overflow-x: scroll;
+
+  // center text
+  :hover {
+    // background: pallet.alpha(pallet.$yang-color, 0.9) !important;
+    color: pallet.alpha(pallet.$yin-color, 0.9) !important;
+    border-radius: 0.5em !important;
+    cursor: pointer;
+  }
+}
+
+.track-node-element::-webkit-scrollbar {
+  display: none;
+}
+
+.track-row.source-index .track-node-element {
+  display: none !important;
+  background: transparent !important;
+}

@@ -1,0 +1,49 @@
+@use "../../tools/ColorPallet.scss" as pallet;
+
+// .node-row {
+//   width: 150%;
+// }
+
+.node-element {
+  padding-inline: 0.5em;
+
+  height: 1.5em;
+  width: fit-content;
+}
+
+.node-element:hover {
+  background-color: pallet.$yang-color;
+  color: pallet.$yin-color;
+
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.node-element.destination-nodes.source-tracks.destination-index {
+  background-color: pallet.$yang-color;
+  color: pallet.$yin-color;
+
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+// .node-dropping-track {
+//   background-color: pallet.$yang-color;
+//   color: pallet.$yin-color;
+
+//   border-radius: 3px;
+//   cursor: pointer;
+// }
+
+.node-element.selected {
+  border: 0px solid pallet.$color-primary;
+  border-radius: 0.5em;
+  background-color: pallet.$yang-color;
+  color: pallet.$yin-color;
+  transition: 0.05s;
+}
+
+.node-element.selected:hover {
+  transition: 0.05s;
+  border-radius: 0.8em;
+}
