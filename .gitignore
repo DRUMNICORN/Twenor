@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+*lock.json
+"Cargo.lock"
+Cargo.lock
+.lock
+
+src-tauri/Cargo.lock
