@@ -109,12 +109,10 @@ class Sidebar extends React.Component<SidebarProps, SidebarState> {
         sidebar_width: new_sidebar_width,
       });
 
-      console.log("new_sidebar_width: " + new_sidebar_width);
     }
   };
 
   render() {
-    console.log("sidebar_width: " + this.state.sidebar_width);
     return (
       <div className="sidebar" ref={this.state.sidebar_ref}>
         <div

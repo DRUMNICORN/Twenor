@@ -1,5 +1,11 @@
 @use "./Colors.scss" as pallet;
 
+.titlebar {
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+}
+
 div.titlebar {
   background-color: pallet.alpha(pallet.$yin-color, 0.8);
   height: 30px;
@@ -24,10 +30,12 @@ div.titlebar > div {
 
 .titlebar-left {
   justify-content: flex-start;
+  margin-right: 50%;
 }
 
 .titlebar-right {
   justify-content: flex-end;
+  margin-left: 50%;
 }
 
 .titlebar-button {
@@ -48,14 +56,10 @@ div.titlebar > div {
   filter: invert(1);
 }
 
-.titlebar-button:hover > img {
-  filter: invert(1);
+.titlebar-button.toggled {
+  background: pallet.alpha(pallet.$color-primary, 0.2);
 }
 
-.titlebar-button:active {
-  background: pallet.alpha(pallet.$color-secondary, 0.8);
-}
-
-.titlebar-button:active > img {
-  filter: invert(1);
+.titlebar-button.toggled:hover {
+  background: pallet.alpha(pallet.$color-primary, 0.5);
 }

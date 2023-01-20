@@ -6,7 +6,7 @@ import { emit } from "@tauri-apps/api/event";
 
 import Button from "./util/Button";
 import "../styles/Titlebar.scss";
-import Api from "../Api";
+// import Api from "../Api";
 
 function TitleBar() {
   const [isReloading, setReloading] = useState(false);
@@ -14,8 +14,20 @@ function TitleBar() {
   return (
     <div className="titlebar" data-tauri-drag-region>
       <div className="titlebar-left" data-tauri-drag-region>
-        <Button name="import" link="ant-design/import-outlined" onClick={() => requestImportXml()} />
-        <Button name="export" link="ant-design/export-outlined" onClick={() => requestExportXml()} />
+        <Button
+          name="import"
+          link="ant-design/import-outlined"
+          onClick={() => requestImportXml()}
+          isToggable={true}
+          onToggle={() => console.log("toggle")}
+        />
+        <Button
+          name="export"
+          link="ant-design/export-outlined"
+          onClick={() => requestExportXml()}
+          isToggable={true}
+          onToggle={() => console.log("toggle")}
+        />
       </div>
 
       <div className="titlebar-right" data-tauri-drag-region>
@@ -30,10 +42,9 @@ function TitleBar() {
 
   async function requestImportXml() {
     // open file dialog and select xml file to import into the track library
-
-    let xml_path = await Api.requestOpenFileDialog();
-    console.log(` <= Import Xml: ${xml_path}`);
-    Api.requestImportXml(xml_path);
+    // let xml_path = await Api.requestOpenFileDialog();
+    // console.log(` <= Import Xml: ${xml_path}`);
+    // Api.requestImportXml(xml_path);
   }
 
   function requestExportXml() {}
@@ -46,7 +57,7 @@ function TitleBar() {
     setReloading(true);
     let reloadButton = document.getElementById("reload");
     reloadButton?.classList.add("spin");
-    Api.requestReload();
+    // Api.requestReload();
 
     setTimeout(() => {
       reloadButton?.classList.remove("spin");

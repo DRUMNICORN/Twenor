@@ -15,8 +15,9 @@ import "../../styles/Logo.scss";
 function Logo(): JSX.Element {
   // it should contain a logo component and a explorer component
   return (
-    <div>
-      <img src="../../data/img/logo.ico" className="logo"></img>
+    <div className="logo">
+      <div className="image" />  
+      <div className="background" />
     </div>
   );
 }

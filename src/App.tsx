@@ -13,7 +13,7 @@ import Content from "./components/Content";
 
 // In this file we can import the tauri api
 import { appWindow } from "@tauri-apps/api/window";
-import Explorer from "./components/Explorer";
+import Explorer from "./components/pages/Explorer";
 import Logo from "./components/design/Logo";
 
 import "./App.scss";
