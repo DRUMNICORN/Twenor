@@ -11,12 +11,20 @@ import React from "react";
 import "../../styles/Sidebar.scss";
 
 // create a new resizebar component
-function ResizeBar(): JSX.Element {
+
+type ResizeBarProps = {
+  onResizerBarHold: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  onResizerBarStopHold: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+};
+
+function ResizeBar(props: ResizeBarProps): JSX.Element {
   // it should contain a logo component and a explorer component
   return (
-    <div className="resizebar">
-      <div className="resizebar-handle"></div>
-    </div>
+    <div
+      className="resizebar"
+      onMouseDown={props.onResizerBarHold}
+      onMouseUp={props.onResizerBarStopHold}
+    ></div>
   );
 }
 

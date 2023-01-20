@@ -8,7 +8,7 @@
 import React from "react";
 
 import Titlebar from "./components/Titlebar";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/util/Sidebar";
 import Content from "./components/Content";
 
 // In this file we can import the tauri api

@@ -4,8 +4,8 @@
   grid-area: sidebar;
   flex-grow: 0;
   flex-shrink: 0;
-  min-width: 10em;
-  max-width: 99.5%;
+  // min-width: 10em;
+  // max-width: 99.5%;
   display: flex;
   border-right: pallet.alpha(pallet.$yang-color, 0.9) 3px solid;
   flex-direction: row;
