@@ -1,21 +1,48 @@
-@use "./tools/ColorPallet.scss" as pallet;
+@use "./Colors.scss" as pallet;
 
+// .titlebar {
+//   height: 30px;
+//   background-color: pallet.alpha(pallet.$yin-color, 0.5);
+//   user-select: none;
+//   display: flex;
+//   justify-content: flex-end;
+//   margin-left: 10em;
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   z-index: 10;
+// }
 
-.titlebar-right {
+// .titlebar-right {
+//   height: 30px;
+//   background-color: pallet.alpha(pallet.$yin-color, 0.5);
+//   user-select: none;
+//   display: flex;
+//   justify-content: flex-start;
+//   position: fixed;
+//   margin-right: 40em;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   z-index: 10;
+// }
+
+div.titlebar > div {
   height: 30px;
   background-color: pallet.alpha(pallet.$yin-color, 0.5);
   user-select: none;
   display: flex;
-  justify-content: flex-start;
   position: fixed;
-  margin-right: 40em;
   top: 0;
   left: 0;
   right: 0;
   z-index: 10;
 }
 
-.titlebar {
+.titlebar-left {
+  justify-content: flex-start;
+  margin-left: 10em;
   height: 30px;
   background-color: pallet.alpha(pallet.$yin-color, 0.5);
   user-select: none;
@@ -29,25 +56,20 @@
   z-index: 10;
 }
 
-.titlebar-reload-animate {
-  animation: rotation 2s forwards ease-in-out;
-}
-
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(1080deg);
-  }
-}
-
-img.titlebar-img {
-  filter: invert(1);
-}
-
-.titlebar-button:hover > img.titlebar-img {
-  filter: invert(1);
+.titlebar-right {
+  justify-content: flex-end;
+  margin-right: 40em;
+  height: 30px;
+  background-color: pallet.alpha(pallet.$yin-color, 0.5);
+  user-select: none;
+  display: flex;
+  justify-content: flex-start;
+  position: fixed;
+  margin-right: 40em;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
 }
 
 .titlebar-button {
@@ -64,6 +86,10 @@ img.titlebar-img {
   background: pallet.alpha(pallet.$color-secondary, 0.5);
 }
 
-#close:hover {
-  background: pallet.alpha(pallet.$color-primary, 0.5);
+.titlebar-button > img {
+  filter: invert(1);
+}
+
+.titlebar-button:hover > img {
+  filter: invert(1);
 }
