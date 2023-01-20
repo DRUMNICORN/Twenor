@@ -33,6 +33,24 @@ pub fn init_listeners(a: &mut tauri::App, l: Arc<Mutex<Library>>) {
     LOG.info("Listeners initialized");
 }
 
+// pub fn get_invoke_handler() -> tauri::InvokeHandler {
+//     tauri::generate_handler![
+//         on_request_library,
+//         on_request_node,
+//         on_request_nodes,
+//         on_request_track,
+//         on_request_config,
+//         on_request_reload,
+//         on_update_config,
+//         on_add_track,
+//         on_add_node,
+//         on_add_node_to_track,
+//         on_add_track_with_node,
+//         on_open_file_dialog,
+//         move_node
+//     ]
+// }
+
 fn on_request_library(library: &mut Library, app_handle: &AppHandle, _data: Data) {
     emitter::library(app_handle, library)
 }
