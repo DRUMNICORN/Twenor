@@ -1,0 +1,17 @@
+.logo {
+  width: 5em;
+  height: 5em !important; // @jonaklaro
+  padding: 0.2em;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+
+  // put border 1em in the middle
+  margin: 2em;
+
+  background-size: 10em;
+  border-radius: 0.5em;
+  background-position: center;
+  background-image: url("https://media0.giphy.com/media/QZmKJyPoR2kqChtBqV/giphy.gif?cid=ecf05e47lbfti5let9pxizleetaxjwb89xopaz9wc0hphc9m&rid=giphy.gif&ct=g");
+}

@@ -4,7 +4,7 @@ import { appWindow } from "@tauri-apps/api/window";
 //tauri add emit event
 import { emit } from "@tauri-apps/api/event";
 
-import Button from "./Titlebar/Button";
+import Button from "./util/Button";
 import "../styles/Titlebar.scss";
 import Api from "../Api";
 
@@ -13,12 +13,12 @@ function TitleBar() {
 
   return (
     <div className="titlebar" data-tauri-drag-region>
-      <div className="titlebar-right" data-tauri-drag-region>
+      <div className="titlebar-left" data-tauri-drag-region>
         <Button name="import" link="ant-design/import-outlined" onClick={() => requestImportXml()} />
         <Button name="export" link="ant-design/export-outlined" onClick={() => requestExportXml()} />
       </div>
 
-      <div className="titlebar-left" data-tauri-drag-region>
+      <div className="titlebar-right" data-tauri-drag-region>
         <Button name="reload" link="ant-design/reload-outlined" onClick={() => requestReload()} />
         <Button name="setting" link="ant-design/setting-outlined" onClick={() => emit("toggleSetting")} />
         <Button name="minimize" link="codicon/chrome-minimize" onClick={() => appWindow.minimize()} />
@@ -44,7 +44,14 @@ function TitleBar() {
     }
 
     setReloading(true);
+    let reloadButton = document.getElementById("reload");
+    reloadButton?.classList.add("spin");
     Api.requestReload();
+
+    setTimeout(() => {
+      reloadButton?.classList.remove("spin");
+      setReloading(false);
+    }, 1000);
   }
 }
 

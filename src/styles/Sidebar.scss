@@ -1,0 +1,28 @@
+@use "./Colors.scss" as pallet;
+
+.sidebar {
+  grid-area: sidebar;
+  flex-grow: 0;
+  flex-shrink: 0;
+  min-width: 10em;
+  max-width: 99.5%;
+  display: flex;
+  border-right: pallet.alpha(pallet.$yang-color, 0.9) 3px solid;
+  flex-direction: row;
+  background: black;
+  z-index: 2;
+}
+
+.resizebar:hover {
+  width: 3px;
+  background: pallet.alpha(pallet.$yang-color, 0.2);
+}
+
+.resizebar {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 6px;
+  justify-self: flex-end;
+  cursor: col-resize;
+  resize: horizontal;
+}

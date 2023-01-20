@@ -1,36 +1,18 @@
 @use "./Colors.scss" as pallet;
 
-// .titlebar {
-//   height: 30px;
-//   background-color: pallet.alpha(pallet.$yin-color, 0.5);
-//   user-select: none;
-//   display: flex;
-//   justify-content: flex-end;
-//   margin-left: 10em;
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   z-index: 10;
-// }
-
-// .titlebar-right {
-//   height: 30px;
-//   background-color: pallet.alpha(pallet.$yin-color, 0.5);
-//   user-select: none;
-//   display: flex;
-//   justify-content: flex-start;
-//   position: fixed;
-//   margin-right: 40em;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   z-index: 10;
-// }
+div.titlebar {
+  background-color: pallet.alpha(pallet.$yin-color, 0.8);
+  height: 30px;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9;
+}
 
 div.titlebar > div {
   height: 30px;
-  background-color: pallet.alpha(pallet.$yin-color, 0.5);
   user-select: none;
   display: flex;
   position: fixed;
@@ -42,34 +24,10 @@ div.titlebar > div {
 
 .titlebar-left {
   justify-content: flex-start;
-  margin-left: 10em;
-  height: 30px;
-  background-color: pallet.alpha(pallet.$yin-color, 0.5);
-  user-select: none;
-  display: flex;
-  justify-content: flex-end;
-  margin-left: 10em;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
 }
 
 .titlebar-right {
   justify-content: flex-end;
-  margin-right: 40em;
-  height: 30px;
-  background-color: pallet.alpha(pallet.$yin-color, 0.5);
-  user-select: none;
-  display: flex;
-  justify-content: flex-start;
-  position: fixed;
-  margin-right: 40em;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
 }
 
 .titlebar-button {
@@ -79,7 +37,7 @@ div.titlebar > div {
   width: 30px;
   height: 30px;
   transition: background-color 0.1s ease-in-out;
-  background: rgb(0, 0, 0, 0.3);
+  background: pallet.alpha(pallet.$yin-color, 0.2);
 }
 
 .titlebar-button:hover {
@@ -91,5 +49,13 @@ div.titlebar > div {
 }
 
 .titlebar-button:hover > img {
+  filter: invert(1);
+}
+
+.titlebar-button:active {
+  background: pallet.alpha(pallet.$color-secondary, 0.8);
+}
+
+.titlebar-button:active > img {
   filter: invert(1);
 }

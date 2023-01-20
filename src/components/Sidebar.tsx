@@ -9,18 +9,18 @@
 
 import React from "react";
 
-import Logo from "./Sidebar/Logo";
-import Explorer from "./Sidebar/Explorer";
+import ResizeBar from "./util/ResizeBar";
 
 import "../styles/Sidebar.scss";
 
-// create a new sidebar component
-function Sidebar(): JSX.Element {
+// the parent element passes the children to the sidebar component
+
+function Sidebar(props: { children: React.ReactNode }): JSX.Element {
   // it should contain a logo component and a explorer component
   return (
     <div className="sidebar">
-      <Logo />
-      <Explorer />
+      <div className="content">{props.children}</div>
+      <div className="resizebar"></div>
     </div>
   );
 }

@@ -9,7 +9,7 @@
 
 import React from "react";
 
-import "../../styles/Explorer.scss";
+import "../styles/Explorer.scss";
 
 // create a new explorer component
 
