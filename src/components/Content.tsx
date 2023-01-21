@@ -10,18 +10,27 @@
 import React from "react";
 
 import "../styles/Content.scss";
-import SelectRecordbox from "./pages/SelectRecordbox";
-import Welcome from "./pages/Welcome";
 import FileSelector from "./util/FileSelector";
 
-function Content(): JSX.Element {
+// function Content(): JSX.Element {
+//   // it should contain a logo component and a explorer component
+//   return (
+//     <div className="content">
+//       <div className="content-wrapper">
+//       </div>
+//     </div>
+//   );
+// }
+
+type ContentProps = {
+  children: React.ReactNode;
+};
+
+function Content(props: ContentProps): JSX.Element {
   // it should contain a logo component and a explorer component
   return (
     <div className="content">
-      <div className="content-wrapper">
-        <Welcome />
-        <SelectRecordbox />
-      </div>
+      <div className="content-wrapper">{props.children}</div>
     </div>
   );
 }

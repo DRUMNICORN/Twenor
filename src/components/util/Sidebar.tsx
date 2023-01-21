@@ -7,58 +7,11 @@
  *
  */
 
-/**
- * onResizerBarHold = (e) => {
-    this.setState({
-      resizing: true,
-    });
-  };
-
-  onResizerBarStopHold = (e) => {
-    this.setState({
-      resizing: false,
-    });
-  };
-
-  onResizerBarDrag = (e) => {
-    if (this.state.resizing) {
-      this.requestUpdateConfigProperty(
-        "sidebar_width",
-        (e.clientX - this.state.sidebar_ref.current.getBoundingClientRect().left).toString()
-      );
-    }
-  };
- */
-
 import React from "react";
 
 import ResizeBar from "./ResizeBar";
 
 import "../../styles/Sidebar.scss";
-
-// the parent element passes the children to the sidebar component
-
-// function Sidebar(props: { children: React.ReactNode }): JSX.Element {
-//   // it should contain a logo component and a explorer component
-//   return (
-//     <div className="sidebar">
-//       <div className="content">{props.children}</div>
-//       <div className="resizebar"></div>
-//     </div>
-//   );
-// }
-
-// export default Sidebar;
-
-// now with a ref to the resizebar element to be able to get the position of the resizebar
-
-// type MyProps = {
-//   // using `interface` is also ok
-//   message: string;
-// };
-// type MyState = {
-//   count: number; // like this
-// };
 
 type SidebarProps = {
   children: React.ReactNode;
@@ -149,7 +102,6 @@ class Sidebar extends React.Component<SidebarProps, SidebarState> {
   requestUpdateConfigProperty = (property: string, value: string) => {
     // send a request to the backend to update the config property
     // this is a temporary solution, it should be replaced with a request to the backend
-    // console.log("requestUpdateConfigProperty: " + property + " = " + value);
   };
 }
 

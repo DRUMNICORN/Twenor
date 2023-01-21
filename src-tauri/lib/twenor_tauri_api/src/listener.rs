@@ -1,6 +1,7 @@
 #![allow(dead_code)]
 
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 use tauri::{AppHandle, Manager};
 
@@ -10,14 +11,13 @@ use twenor_log::Filename;
 use twenor_log::Log;
 static LOG: Log = Log::new(Filename::Listener);
 
-#[derive(Clone, Deserialize)]
-pub struct FileFilter {
-    name: String,
-    extensions: Vec<String>,
-}
 
-#[derive(Deserialize)]
+
+#[derive(Deserialize, Debug, Serialize, Clone)]
 pub enum Data {
+    Title {
+        title: String,
+    },
     TrackId {
         track_id: String,
     },
@@ -58,11 +58,12 @@ pub enum Data {
     XmlPath {
         xml_path: String,
     },
-    FileDialog {
-        title: String,
-        filters: Vec<FileFilter>,
-    },
+    // FileDialog {
+    //     title: String,
+    //     filters: Vec<FileFilter>,
+    // },
     None,
+    Args(HashMap<String, Data>),
 }
 
 impl Data {
@@ -156,9 +157,23 @@ impl Data {
         }
     }
 
-    pub fn unwrap_file_dialog(&self) -> (String, Vec<FileFilter>) {
+    // pub fn unwrap_file_dialog(&self) -> (String, Vec<FileFilter>) {
+    //     match self {
+    //         Data::FileDialog { title, filters } => (title.to_string(), filters.to_vec()),
+    //         _ => panic!("Invalid data type"),
+    //     }
+    // }
+
+    // pub fn unwrap_filters(&self) -> Vec<FileFilter> {
+    //     match self {
+    //         Data::Filters { filters } => filters.to_vec(),
+    //         _ => panic!("Invalid data type"),
+    //     }
+    // }
+
+    pub fn unwrap_title(&self) -> String {
         match self {
-            Data::FileDialog { title, filters } => (title.to_string(), filters.to_vec()),
+            Data::Title { title } => title.to_string(),
             _ => panic!("Invalid data type"),
         }
     }
@@ -174,6 +189,8 @@ pub fn listen(
     let app_handle = app.app_handle();
     app.listen_global(event, move |event| {
         LOG.debug(&format!("Received event: {}", event_name));
+        LOG.debug(&format!("Event payload: {:?}", event.payload()));
+
         let data = match event.payload() {
             Some(data_str) => {
                 let data_json: Result<Data, serde_json::Error> = serde_json::from_str(&data_str);

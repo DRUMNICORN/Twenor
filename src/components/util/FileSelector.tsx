@@ -6,9 +6,12 @@
  * @date 2021-06-01
  */
 
-import { invoke } from "@tauri-apps/api";
 import React from "react";
+import Interface from "../../Interface";
+import invoke from "../../Interface";
 // import Api from "../../Api";
+
+import { open } from "@tauri-apps/api/dialog";
 
 import "../../styles/FileSelector.scss";
 
@@ -26,34 +29,53 @@ type FileSelectorState = {
 function onChange(event: React.ChangeEvent<HTMLInputElement>): void {
   const path = event.target.value;
   // should open a file dialog from input field
-  console.log(path);
+  // console.log(path);
 }
 
-function FileSelector(props: FileSelectorProps, state: FileSelectorState): JSX.Element {
-  let path = state.path || props.defaultValue;
+class FileSelector extends React.Component<FileSelectorProps, FileSelectorState> {
+  constructor(props: FileSelectorProps) {
+    super(props);
+    this.state = {
+      path: "",
+    };
+  }
 
-  return (
-    <div className="file-selector">
-      {/* <label htmlFor="file">{path}</label> */}
-      <input
-        type="text"
-        id="file"
-        accept={props.accept}
-        name={props.label}
-        onChange={onChange}
-        defaultValue={props.defaultValue}
-      />
+  componentDidMount() {
+    Interface.get("XML_PATH").then((path) => {
+      this.setState({ path: path });
+      return path;
+    });
+  }
 
-      <button
-        type="button"
-        onClick={() => {
-          invoke("open_file_dialog", { accept: props.accept });
-        }}
-      >
-        <p>Select File</p>
-      </button>
-    </div>
-  );
+  render() {
+    return (
+      <div className="file-selector">
+        <input
+          type="text"
+          id="file"
+          accept={this.props.accept}
+          name={this.props.label}
+          onChange={onChange}
+          defaultValue={this.state.path}
+        />
+
+        <button
+          type="button"
+          onClick={() => {
+            open({
+              title: "Select Recordbox Library",
+              filters: [{ name: "XML", extensions: ["xml"] }],
+              multiple: false,
+            }).then((path) => {
+              this.setState({ path: path as string });
+            });
+          }}
+        >
+          <p>Select File</p>
+        </button>
+      </div>
+    );
+  }
 }
 
 export default FileSelector;

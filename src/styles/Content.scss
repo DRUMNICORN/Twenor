@@ -3,8 +3,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  max-height: 100%;
+  height: 100%;
   // min-width: 20em;
 
   // margin: 2em;
@@ -15,7 +14,9 @@
 }
 
 .content > .content-wrapper {
-
-  margin: 2em;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-top: 2em;
+  height: 100%;
   z-index: 3;
 }

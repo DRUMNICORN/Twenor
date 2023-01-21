@@ -10,6 +10,7 @@ use track::TrackDetails;
 extern crate anyhow;
 extern crate serde;
 extern crate serde_xml_rs;
+extern crate tauri;
 
 use anyhow::anyhow as ah;
 use anyhow::Result;
@@ -65,10 +66,13 @@ impl Library {
         }
     }
 
-    // pub fn load(&self, config_path: &str) -> Result<Self, String> {
-    //     let library = Library::new();
-    //     Ok(library)
-    // }
+    pub fn get_xml_path(&self) -> String {
+        match self.config.get("xml_path") {
+            Some(xml_path) => xml_path,
+            None => "library.xml",
+        }
+        .to_string()
+    }
 
     pub fn get_node_by_path(&mut self, path: String) -> Result<&mut Node> {
         for node in self.dj_playlists.playlists.node.iter_mut() {

@@ -9,10 +9,11 @@ use anyhow::Result;
 
 use rfd::FileDialog;
 
-pub fn input_file_dialog() -> Result<PathBuf> {
+pub fn input_file_dialog(title: &str, directory: &str) -> Result<PathBuf> {
     let files = FileDialog::new()
-        .add_filter("All", &["*"])
+        .add_filter("All", &["xml"])
         .set_directory("/")
+        .set_title(title)
         .pick_file();
 
     match files {

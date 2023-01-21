@@ -44,7 +44,6 @@ fn main() {
         .register_uri_scheme_protocol("stream", move |_app, request| {
             tauri_audio_stream::handle_request(request)
         })
-        // .invoke_handler(twenor_tauri_api::get_invoke_handler())
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

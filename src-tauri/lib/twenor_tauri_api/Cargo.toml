@@ -13,4 +13,6 @@ rfd = "0.10.0"
 tauri = { version = "^1.1.1" }
 
 twenor_log = { path = "../twenor_log/" }
+twenor_tools = { path = "../twenor_tools/" }
+
 xml_library = { path = "../xml_library/" }
