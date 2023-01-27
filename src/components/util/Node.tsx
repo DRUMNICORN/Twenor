@@ -8,18 +8,7 @@
  */
 
 import React from "react";
-
-type Track = {
-  Key: string;
-};
-
-type Node = {
-  Type: string;
-  Count: string;
-  Name: string;
-  NODE: Node[];
-  TRACK: Track[];
-};
+import { Node, Track } from "./Datatypes";
 
 type NodeProps = {
   node: Node;
@@ -33,8 +22,7 @@ class NodeComponent extends React.Component<NodeProps, NodeState> {
     this.state = {};
   }
 
-  componentDidUpdate(): void {
-  }
+  componentDidUpdate(): void {}
 
   render() {
     let nodes = this.props.node.NODE;

@@ -22,3 +22,15 @@ export type BackendNode = {
   type: string;
   children: Array<BackendNode>;
 };
+
+export type Track = {
+  Key: string;
+};
+
+export type Node = {
+  Type: string;
+  Count: string;
+  Name: string;
+  NODE: Node[];
+  TRACK: Track[];
+};

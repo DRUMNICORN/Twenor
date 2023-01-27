@@ -17,12 +17,15 @@ import Explorer from "./components/util/Explorer";
 
 // In this file we can import the tauri api
 import { appWindow } from "@tauri-apps/api/window";
+
 import Logo from "./components/design/Logo";
 
 import "./App.scss";
 import Pages from "./components/util/Pages";
 import Page from "./components/util/Page";
 import Interface from "./Interface";
+
+import TrackOverview from "./components/pages/TrackOverview";
 
 type AppProps = {};
 type AppState = {
@@ -96,6 +99,7 @@ class App extends React.Component<AppProps, AppState> {
             </Page>
             <Page index={1}>
               <h1>Page 2</h1>
+              <TrackOverview nodes={this.state.nodes} />
             </Page>
             <Page index={2}>
               <h1>Page 3</h1>

@@ -13,6 +13,8 @@
     "server": "node ./src/library-server/app.js"
   },
   "dependencies": {
+    "@react-three/drei": "^9.56.4",
+    "@react-three/fiber": "^8.10.1",
     "@tauri-apps/api": "^1.2.0",
     "polished": "^4.2.2",
     "react": "^18.2.0",
@@ -20,7 +22,8 @@
     "react-beautiful-dnd": "13.1.1",
     "react-dom": "^18.2.0",
     "sass": "^1.57.0",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "three": "^0.149.0"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.2.2",
