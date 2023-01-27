@@ -13,6 +13,8 @@ import PageControl from "./PageControl";
 
 type PagesProps = {
   children: React.ReactNode;
+  onChange: (page: number) => void;
+  page: number;
 };
 
 type PagesState = {
@@ -23,7 +25,7 @@ class Pages extends React.Component<PagesProps, PagesState> {
   constructor(props: PagesProps) {
     super(props);
     this.state = {
-      page: 0,
+      page: this.props.page,
     };
   }
 
@@ -55,6 +57,7 @@ class Pages extends React.Component<PagesProps, PagesState> {
         <div className="pages__pagecontrol">
           <PageControl
             onChange={(page: number): void => {
+              this.props.onChange(page);
               this.setState({ page: page });
             }}
             pages={pages}

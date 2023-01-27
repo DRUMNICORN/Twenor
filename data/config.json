@@ -1,0 +1,17 @@
+{
+  "xml_path": {
+    "String": "C:\\Users\\robin\\Desktop\\library.xml"
+  },
+  "sidebar_width": {
+    "I32": 224
+  },
+  "config_path": {
+    "String": "../data/config.json"
+  },
+  "page": {
+    "I32": 1
+  },
+  "nodes": {
+    "Object": "[{\"Type\":\"0\",\"Name\":\"ROOT\",\"NODE\":[{\"Type\":\"1\",\"Name\":\"Trial playlist - Cloud Library Sync\",\"NODE\":[],\"PATH\":\"\"},{\"Type\":\"1\",\"Name\":\"TEST\",\"NODE\":[],\"PATH\":\"\"},{\"Type\":\"1\",\"Name\":\"LOVE\",\"NODE\":[],\"PATH\":\"\"},{\"Type\":\"1\",\"Name\":\"42\",\"NODE\":[],\"PATH\":\"\"},{\"Type\":\"1\",\"Name\":\"Playlist\",\"NODE\":[],\"PATH\":\"\"},{\"Type\":\"0\",\"Name\":\"VOCOL\",\"NODE\":[{\"Type\":\"1\",\"Name\":\"BAD\",\"NODE\":[],\"PATH\":\"\"},{\"Type\":\"1\",\"Name\":\"!V\",\"NODE\":[],\"PATH\":\"\"},{\"Type\":\"1\",\"Name\":\"V\",\"NODE\":[],\"PATH\":\"\"},{\"Type\":\"1\",\"Name\":\"Indie V\",\"NODE\":[],\"PATH\":\"\"},{\"Type\":\"1\",\"Name\":\"Indie !V\",\"NODE\":[],\"PATH\":\"\"},{\"Type\":\"1\",\"Name\":\"Folklorum !V\",\"NODE\":[],\"PATH\":\"\"},{\"Type\":\"1\",\"Name\":\"Folklorum V\",\"NODE\":[],\"PATH\":\"\"},{\"Type\":\"1\",\"Name\":\"404 !V\",\"NODE\":[],\"PATH\":\"\"},{\"Type\":\"1\",\"Name\":\"404 V\",\"NODE\":[],\"PATH\":\"\"}],\"PATH\":\"\"},{\"Type\":\"0\",\"Name\":\"COLOR\",\"NODE\":[{\"Type\":\"1\",\"Name\":\"PURBLE\",\"NODE\":[],\"PATH\":\"\"},{\"Type\":\"1\",\"Name\":\"BLUE\",\"NODE\":[],\"PATH\":\"\"},{\"Type\":\"1\",\"Name\":\"LIGHT\",\"NODE\":[],\"PATH\":\"\"},{\"Type\":\"1\",\"Name\":\"GREEN\",\"NODE\":[],\"PATH\":\"\"},{\"Type\":\"1\",\"Name\":\"YELLOW\",\"NODE\":[],\"PATH\":\"\"},{\"Type\":\"1\",\"Name\":\"ORGA\",\"NODE\":[],\"PATH\":\"\"},{\"Type\":\"1\",\"Name\":\"PINK\",\"NODE\":[],\"PATH\":\"\"},{\"Type\":\"1\",\"Name\":\"RED\",\"NODE\":[],\"PATH\":\"\"}],\"PATH\":\"\"},{\"Type\":\"0\",\"Name\":\"Techno\",\"NODE\":[{\"Type\":\"1\",\"Name\":\"Indie\",\"NODE\":[],\"PATH\":\"\"},{\"Type\":\"1\",\"Name\":\"KEYS\",\"NODE\":[],\"PATH\":\"\"}],\"PATH\":\"\"},{\"Type\":\"1\",\"Name\":\"REST\",\"NODE\":[],\"PATH\":\"\"}],\"PATH\":\"\"}]"
+  }
+}

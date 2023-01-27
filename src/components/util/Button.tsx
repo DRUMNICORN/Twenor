@@ -5,8 +5,9 @@
 import React from "react";
 
 interface ButtonProps {
-  name: string;
-  link: string;
+  name?: string;
+  link?: string;
+  children?: React.ReactNode;
   onClick: () => void;
   isToggable?: boolean;
   onToggle?: () => void;
@@ -26,12 +27,39 @@ function Button(props: ButtonProps) {
     }
   }
 
+  //   return (
+  //     <div
+  //       className={`titlebar-button ${props.name} ${isToggled ? "toggled" : ""}`}
+  //       onContextMenu={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => onToggle(e)}
+  //     >
+
+  //   {   if (props.children) {
+  //       return (
+  //         <div className="titlebar-button-content" onClick={() => props.onClick()}>
+  //           {props.children}
+  //         </div>
+  //       );
+  //     }else {
+  //       return
+  //         <img id={props.name} src={src} alt={props.name} onClick={() => props.onClick()} />)
+  //     }
+
+  //  }   </div>
+  //   );
+  // }
+
   return (
     <div
       className={`titlebar-button ${props.name} ${isToggled ? "toggled" : ""}`}
       onContextMenu={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => onToggle(e)}
     >
-      <img id={props.name} src={src} alt={props.name} onClick={() => props.onClick()} />
+      {props.children ? (
+        <div className="titlebar-button-content" onClick={() => props.onClick()}>
+          {props.children}
+        </div>
+      ) : (
+        <img id={props.name} src={src} alt={props.name} onClick={() => props.onClick()} />
+      )}
     </div>
   );
 }

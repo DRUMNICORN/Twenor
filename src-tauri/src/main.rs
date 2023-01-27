@@ -3,16 +3,13 @@
     windows_subsystem = "windows"
 )]
 
-use xml_library;
-use xml_library::config::Config;
-use xml_library::Library;
-
+use log::Filename;
+use log::Log;
 use tauri_audio_stream;
-use twenor_log::Filename;
-use twenor_log::Log;
 
 use std::sync::{Arc, Mutex};
-use twenor_tauri_api;
+use twenor;
+use twenor::config::Config;
 
 static LOG: Log = Log::new(Filename::Main);
 use serde::Serialize;
@@ -23,22 +20,24 @@ pub struct MousePos {
     pub y: i32,
 }
 
-use tauri::Manager;
-
 fn main() {
-    let config = Config::new("../data/config.conf");
-    let library = Library::new(config);
+    let config_path = "../data/config.json".to_string();
+    let config = match Config::from_file(config_path.clone()) {
+        Ok(config) => config,
+        Err(e) => {
+            LOG.error(&format!("Error while loading config: {}", e));
+            Config::default(config_path.clone())
+        }
+    };
+
+    LOG.debug(&format!("Config: {:?}", config));
+
+    let library = twenor::Library::new(config);
 
     LOG.info("Starting Tauri");
     tauri::Builder::default()
         .setup(move |app| {
-            let main_window = app.get_window("main").unwrap();
-            twenor_tauri_api::init_listeners(app, Arc::new(Mutex::new(library)));
-            match main_window.show() {
-                Ok(_) => LOG.info("Main window shown"),
-                Err(e) => LOG.error(&format!("Error while showing main window: {}", e)),
-            }
-
+            twenor::init_listeners(app, Arc::new(Mutex::new(library)));
             Ok(())
         })
         .register_uri_scheme_protocol("stream", move |_app, request| {

@@ -15,6 +15,8 @@ import "../../styles/Sidebar.scss";
 
 type SidebarProps = {
   children: React.ReactNode;
+  onResize: (width: number) => void;
+  initial_width: number;
 };
 
 type SidebarState = {
@@ -29,12 +31,45 @@ class Sidebar extends React.Component<SidebarProps, SidebarState> {
     this.state = {
       resizing: false,
       sidebar_ref: React.createRef(),
-      sidebar_width: 300,
+      sidebar_width: 0,
     };
 
     document.addEventListener("mouseup", this.onResizerBarStopHoldLocal);
     document.addEventListener("mousemove", this.onResizerBarDragLocal);
   }
+
+  componentDidMount(): void {}
+
+  componentDidUpdate(prevProps: Readonly<SidebarProps>, prevState: Readonly<SidebarState>, snapshot?: any): void {
+    if (prevState.resizing !== this.state.resizing)
+      if (this.state.sidebar_width > 0) this.props.onResize(this.state.sidebar_width);
+
+    // check if initial width has changed
+    if (prevProps.initial_width !== this.props.initial_width) {
+      this.setState({
+        sidebar_width: this.props.initial_width,
+      });
+      // this.props.onResize(this.props.initial_width);
+    }
+  }
+
+  onResizerBarHold = (e: React.MouseEvent) => {
+    if (this.state.resizing) {
+      return;
+    }
+    this.setState({
+      resizing: true,
+    });
+  };
+
+  onResizerBarStopHold = (e: React.MouseEvent) => {
+    if (!this.state.resizing) {
+      return;
+    }
+    this.setState({
+      resizing: false,
+    });
+  };
 
   onResizerBarStopHoldLocal = (e: MouseEvent) => {
     this.setState({
@@ -61,15 +96,19 @@ class Sidebar extends React.Component<SidebarProps, SidebarState> {
       this.setState({
         sidebar_width: new_sidebar_width,
       });
-
     }
+  };
+
+  requestUpdateConfigProperty = (property: string, value: string) => {
+    // send a request to the backend to update the config property
+    // this is a temporary solution, it should be replaced with a request to the backend
   };
 
   render() {
     return (
       <div className="sidebar" ref={this.state.sidebar_ref}>
         <div
-          className="content"
+          className="sidebar-content"
           style={{
             width: this.state.sidebar_width,
           }}
@@ -80,29 +119,6 @@ class Sidebar extends React.Component<SidebarProps, SidebarState> {
       </div>
     );
   }
-
-  onResizerBarHold = (e: React.MouseEvent) => {
-    if (this.state.resizing) {
-      return;
-    }
-    this.setState({
-      resizing: true,
-    });
-  };
-
-  onResizerBarStopHold = (e: React.MouseEvent) => {
-    if (!this.state.resizing) {
-      return;
-    }
-    this.setState({
-      resizing: false,
-    });
-  };
-
-  requestUpdateConfigProperty = (property: string, value: string) => {
-    // send a request to the backend to update the config property
-    // this is a temporary solution, it should be replaced with a request to the backend
-  };
 }
 
 export default Sidebar;

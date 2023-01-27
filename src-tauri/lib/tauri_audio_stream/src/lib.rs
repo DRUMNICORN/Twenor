@@ -8,9 +8,9 @@ use tauri::http::Request;
 use tauri::http::Response;
 use tauri::http::ResponseBuilder;
 
-use twenor_log::Filename;
-use twenor_log::Log;
-use twenor_log::LogLevel;
+use log::Filename;
+use log::Log;
+use log::LogLevel;
 static LOG: Log = Log::new_with_level(Filename::Stream, LogLevel::Error);
 
 pub enum AcceptedFileType {

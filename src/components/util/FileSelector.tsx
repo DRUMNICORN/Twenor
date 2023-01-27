@@ -19,7 +19,7 @@ type FileSelectorProps = {
   label: string;
   accept: string;
   defaultValue?: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (path: string) => void;
 };
 
 type FileSelectorState = {
@@ -28,15 +28,13 @@ type FileSelectorState = {
 
 function onChange(event: React.ChangeEvent<HTMLInputElement>): void {
   const path = event.target.value;
-  // should open a file dialog from input field
-  // console.log(path);
 }
 
 class FileSelector extends React.Component<FileSelectorProps, FileSelectorState> {
   constructor(props: FileSelectorProps) {
     super(props);
     this.state = {
-      path: "",
+      path: this.props.defaultValue ? this.props.defaultValue : "",
     };
   }
 
@@ -67,7 +65,9 @@ class FileSelector extends React.Component<FileSelectorProps, FileSelectorState>
               filters: [{ name: "XML", extensions: ["xml"] }],
               multiple: false,
             }).then((path) => {
-              this.setState({ path: path as string });
+              let pathString = path as string;
+              this.setState({ path: pathString });
+              this.props.onChange(pathString);
             });
           }}
         >

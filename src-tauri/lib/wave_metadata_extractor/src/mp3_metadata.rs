@@ -23,7 +23,7 @@ pub fn get_metadata(path: &str) -> HashMap<String, String> {
             let nodes = Node::default().read_from_path(path).unwrap();
 
             // log the results
-            // println!("{}", format!("{:?}", nodes));
+            // ln!("{}", format!("{:?}", nodes));
             
 
             // let mut metadata = HashMap::new();

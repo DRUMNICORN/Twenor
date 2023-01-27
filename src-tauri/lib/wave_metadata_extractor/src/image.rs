@@ -38,11 +38,9 @@
 
 // fn read_node(path: &Path) -> anyhow::Result<Node> {
 //     Node::read_from_path(&path).or_else(|e| {
-//         // eprintln!("Warning: file metadata is corrupted, trying to read partial node: {}", path.display());
 //         e.partial_node.clone().ok_or_else(|| anyhow!("Error reading music file {:?}: {}", path, e))
 //     })
 // }
-
 
 // pub fn request_local_image(track_path: &str, id: &str) -> String {
 //   LOG.debug(&format!("Requesting local image {}", track_path));

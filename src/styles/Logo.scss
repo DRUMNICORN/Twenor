@@ -14,53 +14,33 @@
 
   width: 10em;
   height: 10em;
-
 }
 
-@media (min-width: 768px) {
-  .logo {
-    // width: 5em;
-    // height: 5em !important; // @jonaklaro
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+/Edge */
-    user-select: none; /* Standard */
+// @media (min-width: 768px) {
+//   .logo {
+//     // width: 5em;
+//     // height: 5em !important; // @jonaklaro
+//     -webkit-user-select: none; /* Safari */
+//     -moz-user-select: none; /* Firefox */
+//     -ms-user-select: none; /* IE10+/Edge */
+//     user-select: none; /* Standard */
 
-    // put border 1em in the middle
-    margin: 2em;
-    // center the image
+//     // put border 1em in the middle
+//     margin: 2em;
+//     // center the image
 
-    align-self: center;
+//     align-self: center;
 
-    width: 10em;
-    height: 10em;
-
-  }
-}
+//     width: 10em;
+//     height: 10em;
+//   }
+// }
 
 .logo > .image {
   width: 10em;
   height: 10em;
   object-fit: contain;
 
-  z-index: 8;
-  position: absolute;
-  top: 12.5%;
-  left: 12.5%;
-
-  background-image: url("../../data/img/logo.ico");
-  background-size: 10em;
-  border-radius: 0.5em;
-  background-position: center;
-}
-
-
-.logo > .image {
-  width: 10em;
-  height: 10em;
-  object-fit: contain;
-
-  z-index: 8;
   position: absolute;
   top: 12.5%;
   left: 12.5%;
