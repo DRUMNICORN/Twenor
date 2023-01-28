@@ -37,6 +37,7 @@ type AppState = {
   sidebar_width: number;
   nodes: any;
   tracks: any;
+  opened: any;
 };
 class App extends React.Component<AppProps, AppState> {
   constructor(props: AppProps) {
@@ -49,6 +50,7 @@ class App extends React.Component<AppProps, AppState> {
       sidebar_width: 0,
       nodes: [],
       tracks: [],
+      opened: [],
     };
   }
 
@@ -80,6 +82,17 @@ class App extends React.Component<AppProps, AppState> {
             <Logo />
             <Explorer
               nodes={this.state.nodes}
+              opened_nodes={this.state.opened}
+              onToggle={(node: any): void => {
+                let opened = this.state.opened;
+                let index = opened.indexOf(node);
+                if (index == -1) {
+                  opened.push(node);
+                } else {
+                  opened.splice(index, 1);
+                }
+                this.setState({ opened: opened });
+              }}
               onChoose={(node: any): void => {
                 Interface.request_tracks_by_path(node.PATH).then((tracks: any) => {
                   console.log(tracks);

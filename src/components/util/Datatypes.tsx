@@ -24,6 +24,7 @@ export type BackendNode = {
 };
 
 export type Track = {
+  Colour(Colour: any): unknown;
   Name: string;
   TrackID: string;
   Key: string;

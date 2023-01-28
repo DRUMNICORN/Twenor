@@ -24,8 +24,14 @@ class TrackComponent extends React.Component<TrackComponentProps, TrackComponent
   }
 
   render() {
+    console.log("TrackComponent render");
+
+    let colour = this.props.track.Colour.toString().replace("0x", "#");
+    console.log(colour);
+
     return (
       <div className="track-component">
+        <div className="colour" style={{ backgroundColor: colour }}></div>
         <div className={this.props.isSelected ? "selected" : ""}>{this.props.track.Name}</div>
       </div>
     );

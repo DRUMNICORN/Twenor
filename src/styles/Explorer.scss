@@ -9,7 +9,7 @@
   }
 }
 
-.explorer-node-title {
+.explorer-node-header {
   font-size: 1em;
   font-weight: bold;
   text-align: left;
@@ -19,10 +19,59 @@
   background-color: pallet.alpha(pallet.$yang-color, 0.05);
   // round
   border-radius: 0.5em;
+  margin-right: 2em;
 
   margin-top: 0.5em;
+
+  // all elements next to each other
+  display: flex;
 }
 
-.explorer-node-title:hover {
+.explorer-node-title {
+  padding-right: 1em;
+  // dont warp line
+  white-space: nowrap;
+
+  // dont overflow
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.explorer-node-header > .explorer-node-title:hover {
+  background-color: pallet.alpha(pallet.$yang-color, 0.1);
+}
+
+.explorer-node-open {
+  // align self right
+  margin-left: auto;
+}
+
+.colour {
+  width: 1em;
+  height: 1em;
+}
+
+.track-component {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em;
+  border: 1px solid transparent;
+  background-color: pallet.alpha(pallet.$yang-color, 0.05);
+  // round
+  border-radius: 0.5em;
+  margin-right: 2em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding-right: 1em;
+  // dont warp line
+  white-space: nowrap;
+  // dont overflow
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-component:hover {
   background-color: pallet.alpha(pallet.$yang-color, 0.1);
 }

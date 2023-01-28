@@ -16,6 +16,8 @@ import NodeComponent, { Node } from "./NodeComponent";
 
 type ExplorerProps = {
   onChoose: (node: Node) => void;
+  onToggle: (node: Node) => void;
+  opened_nodes: Node[];
   nodes: Node[];
 };
 
@@ -50,7 +52,7 @@ class Explorer extends React.Component<ExplorerProps, ExplorerState> {
           {
             // map the nodes to node components
             nodes.map((node) => {
-              return <NodeComponent node={node} key={node.PATH} onChoose={this.props.onChoose} />;
+              return <NodeComponent node={node} key={node.PATH} onChoose={this.props.onChoose} onToggle={this.props.onToggle} open={this.props.opened_nodes} />;
             })
           }
         </div>

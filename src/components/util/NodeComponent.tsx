@@ -8,10 +8,13 @@
  */
 
 import React from "react";
+import Button from "./Button";
 import { Node, Track } from "./Datatypes";
 
 type NodeProps = {
   node: Node;
+  open: Node[];
+  onToggle: (node: Node) => void;
   onChoose: (node: Node) => void;
 };
 
@@ -39,27 +42,73 @@ class NodeComponent extends React.Component<NodeProps, NodeState> {
       return (
         <>
           {(nodes || []).map((node) => {
-            return <NodeComponent node={node} key={node.PATH} onChoose={this.props.onChoose} />;
+            return (
+              <NodeComponent
+                node={node}
+                key={node.PATH}
+                onChoose={this.props.onChoose}
+                onToggle={this.props.onToggle}
+                open={this.props.open}
+              />
+            );
           })}
         </>
       );
     }
-
     return (
       <div className="explorer-node">
         <div className="explorer-node-wrapper">
-          <div
-            className="explorer-node-title"
-            style={{ marginLeft: (depth - 1) * 10 }}
-            onClick={() => {
-              this.onChoose();
-            }}
-          >
-            {this.props.node.Name}
+          <div className="explorer-node-header">
+            <div
+              className="explorer-node-title"
+              style={{ marginLeft: (depth - 1) * 10 }}
+              onClick={() => {
+                this.onChoose();
+              }}
+            >
+              {this.props.node.Name}
+            </div>
+            <div
+              className="explorer-node-open"
+              onClick={() => {
+                this.props.onToggle(this.props.node);
+              }}
+            >
+              {nodes.length > 0 ? (
+                this.props.open.includes(this.props.node) ? (
+                  <Button
+                    link="material-symbols/featured-play-list-rounded"
+                    onClick={function (): void {
+                      throw new Error("Function not implemented.");
+                    }}
+                  ></Button>
+                ) : (
+                  <Button
+                    link="material-symbols/featured-play-list-outline"
+                    onClick={function (): void {
+                      throw new Error("Function not implemented.");
+                    }}
+                  ></Button>
+                )
+              ) : null}
+            </div>
           </div>
-          {(nodes || []).map((node) => {
-            return <NodeComponent node={node} key={node.PATH} onChoose={this.props.onChoose} />;
-          })}
+
+          {this.props.open.includes(this.props.node) ? (
+            <div className="explorer-node-content">
+              {(nodes || []).map((node) => {
+                return (
+                  <NodeComponent
+                    node={node}
+                    key={node.PATH}
+                    onChoose={this.props.onChoose}
+                    onToggle={this.props.onToggle}
+                    open={this.props.open}
+                  />
+                );
+              })}
+            </div>
+          ) : null}
         </div>
       </div>
     );
