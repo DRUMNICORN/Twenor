@@ -17,16 +17,9 @@ type PagesProps = {
   page: number;
 };
 
-type PagesState = {
-  page: number;
-};
-
-class Pages extends React.Component<PagesProps, PagesState> {
+class Pages extends React.Component<PagesProps> {
   constructor(props: PagesProps) {
     super(props);
-    this.state = {
-      page: this.props.page,
-    };
   }
 
   render() {
@@ -47,18 +40,18 @@ class Pages extends React.Component<PagesProps, PagesState> {
           {React.Children.map(this.props.children, (child) => {
             // hide all pages except the current page
             let index = (child as React.ReactElement).props.index;
-            if (index !== this.state.page) return null;
+            if (index !== this.props.page ) return null;
 
             return React.cloneElement(child as React.ReactElement, {
-              index: this.state.page,
+              index: this.props.page,
             });
           })}
         </div>
         <div className="pages__pagecontrol">
           <PageControl
+            page={this.props.page}
             onChange={(page: number): void => {
               this.props.onChange(page);
-              this.setState({ page: page });
             }}
             pages={pages}
           />

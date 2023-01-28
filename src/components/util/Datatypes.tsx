@@ -24,6 +24,8 @@ export type BackendNode = {
 };
 
 export type Track = {
+  Name: string;
+  TrackID: string;
   Key: string;
 };
 
@@ -33,4 +35,6 @@ export type Node = {
   Name: string;
   NODE: Node[];
   TRACK: Track[];
+  PATH: string;
 };
+

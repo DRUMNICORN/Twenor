@@ -30,8 +30,6 @@ fn main() {
         }
     };
 
-    LOG.debug(&format!("Config: {:?}", config));
-
     let library = twenor::Library::new(config);
 
     LOG.info("Starting Tauri");

@@ -46,6 +46,7 @@ impl StateParameterTypes {
 #[derive(Deserialize, Debug, Serialize, Clone)]
 pub enum Data {
     State(Vec<Property>),
+    String(String),
     None,
 }
 
@@ -54,6 +55,15 @@ impl Data {
         match self {
             Data::State(s) => s.clone(),
             Data::None => Vec::new(),
+            Data::String(_) => todo!(),
+        }
+    }
+
+    pub fn unwrap_string(&self) -> String {
+        match self {
+            Data::None => String::new(),
+            Data::State(_) => todo!(),
+            Data::String(s) => s.clone(),
         }
     }
 }
@@ -66,9 +76,7 @@ pub struct Property {
 
 pub fn state_to_hashmap(state: Vec<Property>) -> HashMap<String, StateParameterTypes> {
     let mut map = HashMap::new();
-    println!("state_to_hashmap: {:?}", state);
     for property in state {
-        println!("state_to_hashmap: {:?}", property);
         map.insert(property.key, property.value);
     }
     map

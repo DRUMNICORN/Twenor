@@ -16,32 +16,6 @@ use crate::product::Product;
 use crate::track::TrackDetails;
 
 #[derive(Debug, Serialize, Deserialize, PartialEq, Clone)]
-pub struct NodeWithTracks {
-    #[serde(rename = "Type")]
-    pub node_type: String,
-    #[serde(rename = "Name")]
-    pub name: String,
-    #[serde(rename = "Count", default)]
-    pub count: String,
-    #[serde(rename = "NODE", default)]
-    pub node: Vec<Node>,
-    #[serde(rename = "TRACK", default)]
-    pub track: Vec<TrackDetails>,
-}
-
-impl NodeWithTracks {
-    pub fn new(node: Node, tracks: Vec<TrackDetails>) -> Self {
-        NodeWithTracks {
-            node_type: node.node_type,
-            name: node.name,
-            count: node.count,
-            node: node.node,
-            track: tracks,
-        }
-    }
-}
-
-#[derive(Debug, Serialize, Deserialize, PartialEq, Clone)]
 pub struct DjPlaylists {
     #[serde(rename = "PRODUCT")]
     pub product: Product,
@@ -104,13 +78,24 @@ impl DjPlaylists {
         }
 
         let xml = read_to_string(path)?;
-        let dj_playlists: DjPlaylists = from_str(&xml)?;
+        let mut dj_playlists: DjPlaylists = from_str(&xml)?;
+
+        // locate all paths
+        dj_playlists.locate_each_node_path();
+
         Ok(dj_playlists)
     }
 
     pub fn to_string(&self) -> Result<String> {
         let xml = serde_xml_rs::to_string(self)?;
         Ok(xml)
+    }
+
+    pub fn locate_each_node_path(&mut self) {
+        // locate each node path
+        for node in &mut self.playlists.node {
+            node.locate_node_path("");
+        }
     }
 }
 

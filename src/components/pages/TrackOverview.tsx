@@ -37,12 +37,19 @@ class TrackOverview extends React.Component<TrackOverviewProps, TrackOverviewSta
   render() {
     return (
       <div className="track-overview">
-          <Canvas className="canvas">
-            <OrbitControls />
-            <ambientLight />
-            <directionalLight position={[10, 10, 5]} />
-            <Box />
-          </Canvas>
+        <h1>Three JS</h1>
+        <p>
+          This app is using <a href="https://threejs.org/">Three JS</a> to render 3D scenes.
+        </p>
+        <Canvas className="canvas">
+          <OrbitControls />
+          <ambientLight />
+          <directionalLight position={[10, 10, 5]} />
+          <Box />
+        </Canvas>
+        <p>
+          In following updates, this will be used to display the track library.
+        </p>
       </div>
     );
   }

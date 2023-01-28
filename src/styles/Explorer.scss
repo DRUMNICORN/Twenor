@@ -1,3 +1,28 @@
+@use "./Colors.scss" as pallet;
+
 .explorer {
-  overflow: hidden !important;
+  // overflow: hidden !important;
+
+  // text align left
+  .ms-List-cell {
+    text-align: left;
+  }
+}
+
+.explorer-node-title {
+  font-size: 1em;
+  font-weight: bold;
+  text-align: left;
+  padding-left: 0.5em;
+
+  border: 1px solid transparent;
+  background-color: pallet.alpha(pallet.$yang-color, 0.05);
+  // round
+  border-radius: 0.5em;
+
+  margin-top: 0.5em;
+}
+
+.explorer-node-title:hover {
+  background-color: pallet.alpha(pallet.$yang-color, 0.1);
 }

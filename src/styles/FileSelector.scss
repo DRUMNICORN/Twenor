@@ -34,8 +34,8 @@
   justify-content: center;
   color: pallet.alpha(pallet.$yang-color, 1);
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  // overflow: hidden;
+  // text-overflow: ellipsis;
 }
 
 .file-selector > input {

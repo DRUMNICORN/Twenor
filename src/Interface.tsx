@@ -104,9 +104,7 @@ const Interface = {
           if (element.value.Bool != undefined) value = element.value.Bool;
           if (element.value.Object != undefined) {
             let obj = element.value.Object;
-            console.log(obj);
             value = JSON.parse(obj);
-            console.log(value);
           }
           if (element.value.None != undefined) value = element.value.None;
 
@@ -120,6 +118,22 @@ const Interface = {
       });
 
       emit(`GET_STATE`);
+    });
+  },
+
+  request_tracks_by_path: async (path: string): Promise<any> => {
+    return new Promise((resolve, _reject) => {
+      listen(`RECEIVE_TRACKS`, (event) => {
+        resolve(JSON.parse(event.payload as string));
+      });
+
+      let data = {
+        String: path,
+      };
+
+      let stringified = JSON.stringify(data);
+
+      emit(`REQUEST_TRACKS`, stringified);
     });
   },
 

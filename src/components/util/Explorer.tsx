@@ -10,11 +10,12 @@
 import React from "react";
 
 import "../../styles/Explorer.scss";
-import NodeComponent, { Node } from "./Node";
+import NodeComponent, { Node } from "./NodeComponent";
 
 // create a new explorer component
 
 type ExplorerProps = {
+  onChoose: (node: Node) => void;
   nodes: Node[];
 };
 
@@ -49,7 +50,7 @@ class Explorer extends React.Component<ExplorerProps, ExplorerState> {
           {
             // map the nodes to node components
             nodes.map((node) => {
-              return <NodeComponent node={node} />;
+              return <NodeComponent node={node} key={node.PATH} onChoose={this.props.onChoose} />;
             })
           }
         </div>

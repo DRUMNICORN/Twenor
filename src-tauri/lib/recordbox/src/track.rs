@@ -1,5 +1,6 @@
 extern crate serde;
 
+use crate::{collection::Collection, node::NodeWithTracks};
 
 use self::serde::{Deserialize, Serialize};
 

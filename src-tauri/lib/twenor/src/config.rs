@@ -57,7 +57,7 @@ impl Config {
         file.read_to_string(&mut contents)?;
         let config: HashMap<String, StateParameterTypes> = serde_json::from_str(&contents)?;
         self.config = config;
-        LOG.debug(&format!("Loaded config: {:?}", self.config));
+        LOG.debug("Loaded config");
         Ok(())
     }
 
@@ -65,7 +65,7 @@ impl Config {
         let mut file = File::create(&self.path)?;
         let json = serde_json::to_string_pretty(&self.config)?;
         file.write_all(json.as_bytes())?;
-        LOG.debug(&format!("Saved config: {:?}", self.config));
+        LOG.debug("Saved config");
         Ok(())
     }
 

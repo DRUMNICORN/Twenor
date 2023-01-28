@@ -10,6 +10,7 @@ use datatypes::StateParameterTypes;
 pub mod emitter;
 pub mod listener;
 use listener::listen;
+use recordbox::node::NodeWithTracks;
 
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
@@ -20,7 +21,6 @@ use tauri::AppHandle;
 extern crate serde;
 
 use recordbox::dj::DjPlaylists;
-use recordbox::dj::NodeWithTracks;
 use recordbox::node::Node;
 use recordbox::node::NodeSimplified;
 use recordbox::track::TrackDetails;
@@ -108,6 +108,24 @@ pub fn init_listeners(a: &mut tauri::App, l: Arc<Mutex<Library>>) {
         },
     );
 
+    listen(
+        "REQUEST_TRACKS",
+        a,
+        l.clone(),
+        |library: &mut Library, app_handle: &AppHandle, data: Data| {
+            LOG.info("Received request to get tracks");
+            let node_path = data.unwrap_string();
+            let tracks = match library.get_tracks(&node_path) {
+                Ok(tracks) => tracks,
+                Err(e) => {
+                    LOG.error(&format!("Error getting tracks: {}", e));
+                    Vec::new()
+                }
+            };
+            emitter::send_response_json(app_handle, "RECEIVE_TRACKS", &tracks);
+        },
+    );
+
     LOG.info("Listeners initialized");
 }
 
@@ -123,7 +141,7 @@ impl Library {
             Some(xml_path) => xml_path.clone().to_display(),
             None => "library.xml".to_string(),
         };
-        
+
         let library = Library {
             config,
             dj_playlists: match DjPlaylists::from_file(&xml_path) {
@@ -138,12 +156,38 @@ impl Library {
         library
     }
 
+    pub fn get_tracks(&self, node_path: &str) -> Result<Vec<TrackDetails>> {
+        // find the node in the dj_playlists
+
+        LOG.debug(&format!("node_path: {}", node_path));
+
+        let node = self.dj_playlists.playlists.get_root_parent();
+        LOG.debug(&format!("node name: {}", node.name));
+
+        let node = match node.get_node_by_path(node_path.to_string()) {
+            Ok(node) => node,
+            Err(e) => {
+                LOG.error(&format!("Error getting node by path: {}", e));
+                return Err(ah!(e));
+            }
+        };
+
+        let tracks = node.get_tracks_from_collection_with_sub_tracks(&self.dj_playlists.collection);
+
+        match tracks {
+            Ok(tracks) => Ok(tracks),
+            Err(e) => {
+                LOG.error(&format!("Error getting tracks from node: {}", e));
+                Err(ah!(e))
+            }
+        }
+    }
+
     pub fn get_xml_path(&self) -> String {
         match self.config.get("xml_path") {
             Some(xml_path) => xml_path.to_display(),
             None => "library.xml".to_string(),
         }
-
     }
 
     pub fn get_state(&self) -> Vec<Property> {
@@ -216,9 +260,9 @@ impl Library {
         // }
     }
 
-    pub fn get_node_by_path(&mut self, path: String) -> Result<&mut Node> {
+    pub fn get_node_by_path_mut(&mut self, path: String) -> Result<&mut Node> {
         for node in self.dj_playlists.playlists.node.iter_mut() {
-            let node = node.get_node_by_path(path.clone());
+            let node = node.get_node_by_path_mut(path.clone());
             if node.is_ok() {
                 return node;
             }
@@ -310,7 +354,7 @@ impl Library {
 
         let arcmut_lib = arcmut_lib_locked.clone();
         let mut arcmut_lib = arcmut_lib.lock().unwrap();
-        let source_node = arcmut_lib.get_node_by_path(source_path.clone());
+        let source_node = arcmut_lib.get_node_by_path_mut(source_path.clone());
         if source_node.is_err() {
             return Err(ah!("Source node not found"));
         }
@@ -321,7 +365,7 @@ impl Library {
 
         let arcmut_lib = arcmut_lib_locked.clone();
         let mut arcmut_lib = arcmut_lib.lock().unwrap();
-        let destination_node = arcmut_lib.get_node_by_path(destination_path.clone());
+        let destination_node = arcmut_lib.get_node_by_path_mut(destination_path.clone());
         if destination_node.is_err() {
             return Err(ah!("Destination node not found"));
         }
@@ -329,7 +373,7 @@ impl Library {
 
         let arcmut_lib = arcmut_lib_locked.clone();
         let mut arcmut_lib = arcmut_lib.lock().unwrap();
-        let source_node_parent = arcmut_lib.get_node_by_path(source_parent_path.clone());
+        let source_node_parent = arcmut_lib.get_node_by_path_mut(source_parent_path.clone());
         if source_node_parent.is_err() {
             return Err(ah!("Source node parent not found"));
         }
@@ -495,7 +539,7 @@ impl Library {
         let arcmut_lib_locked = Arc::new(Mutex::new(self.clone()));
         let arcmut_lib = arcmut_lib_locked.clone();
         let mut arcmut_lib = arcmut_lib.lock().unwrap();
-        let node = arcmut_lib.get_node_by_path(node_path.clone());
+        let node = arcmut_lib.get_node_by_path_mut(node_path.clone());
         if node.is_err() {
             return Err(ah!("Node not found"));
         }
@@ -538,7 +582,7 @@ impl Library {
         let arcmut_lib = arcmut_lib_locked.clone();
         let mut arcmut_lib = arcmut_lib.lock().unwrap();
 
-        let node_parent = arcmut_lib.get_node_by_path(node_parent_path.clone());
+        let node_parent = arcmut_lib.get_node_by_path_mut(node_parent_path.clone());
 
         if node_parent.is_err() {
             return Err(ah!("Node parent not found"));

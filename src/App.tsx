@@ -26,6 +26,7 @@ import Page from "./components/util/Page";
 import Interface from "./Interface";
 
 import TrackOverview from "./components/pages/TrackOverview";
+import TrackList from "./components/util/TrackList";
 
 type AppProps = {};
 type AppState = {
@@ -35,6 +36,7 @@ type AppState = {
   page: number;
   sidebar_width: number;
   nodes: any;
+  tracks: any;
 };
 class App extends React.Component<AppProps, AppState> {
   constructor(props: AppProps) {
@@ -46,6 +48,7 @@ class App extends React.Component<AppProps, AppState> {
       page: 0,
       sidebar_width: 0,
       nodes: [],
+      tracks: [],
     };
   }
 
@@ -75,7 +78,16 @@ class App extends React.Component<AppProps, AppState> {
         >
           <>
             <Logo />
-            <Explorer nodes={this.state.nodes} />
+            <Explorer
+              nodes={this.state.nodes}
+              onChoose={(node: any): void => {
+                Interface.request_tracks_by_path(node.PATH).then((tracks: any) => {
+                  console.log(tracks);
+                  this.setState({ page: 2 });
+                  this.setState({ tracks: tracks });
+                });
+              }}
+            />
           </>
         </Sidebar>
         <Content>
@@ -98,11 +110,10 @@ class App extends React.Component<AppProps, AppState> {
               />
             </Page>
             <Page index={1}>
-              <h1>Page 2</h1>
               <TrackOverview nodes={this.state.nodes} />
             </Page>
             <Page index={2}>
-              <h1>Page 3</h1>
+              <TrackList tracks={this.state.tracks} />
             </Page>
           </Pages>
         </Content>

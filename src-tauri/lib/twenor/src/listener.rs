@@ -21,7 +21,6 @@ pub fn listen(
     let app_handle = app.app_handle();
     app.listen_global(event, move |event| {
         LOG.debug(&format!("Received event: {}", event_name));
-        LOG.debug(&format!("Event payload: {:?}", event.payload()));
 
         let data = match event.payload() {
             Some(data_str) => {

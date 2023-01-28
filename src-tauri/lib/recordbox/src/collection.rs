@@ -1,7 +1,11 @@
+extern crate anyhow;
 extern crate serde;
 
-use crate::track::{Track, TrackDetails};
+use self::anyhow::anyhow as err;
+use self::anyhow::Result;
+
 use self::serde::{Deserialize, Serialize};
+use crate::track::{Track, TrackDetails};
 
 #[derive(Debug, Serialize, Deserialize, PartialEq, Clone)]
 pub struct Collection {
@@ -31,7 +35,7 @@ impl Collection {
         self.entries = entries.to_string();
     }
 
-    pub fn get_tracks_by_keys(&mut self, track_keys: &Vec<Track>) -> Vec<TrackDetails> {
+    pub fn get_tracks_by_keys(&self, track_keys: &Vec<Track>) -> Vec<TrackDetails> {
         let mut tracks: Vec<TrackDetails> = Vec::new();
         for track_key in track_keys {
             let track = self
@@ -42,6 +46,17 @@ impl Collection {
             tracks.push(track.clone());
         }
         tracks
+    }
+
+    pub fn get_track_by_key(&self, track_key: &Track) -> Result<TrackDetails> {
+        match self
+            .track
+            .iter()
+            .find(|t| t.get_key() == track_key.get_key())
+        {
+            Some(track) => Ok(track.clone()),
+            None => Err(err!("Track not found")),
+        }
     }
 }
 

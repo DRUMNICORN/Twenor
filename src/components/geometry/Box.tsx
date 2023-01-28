@@ -29,7 +29,7 @@ class Box extends React.Component<BoxProps, BoxState> {
   render() {
     return (
       <mesh>
-        <boxBufferGeometry attach="geometry" />
+        <boxGeometry attach="geometry" />
         <meshStandardMaterial attach="material" color="hotpink" />
       </mesh>
     );
