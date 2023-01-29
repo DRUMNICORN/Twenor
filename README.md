@@ -1,4 +1,4 @@
-# Audio Lib
+# Wave Lib
 
 A library that loads recordbox xml files and classifies other files based on data learned from existing entries based on a neural network.
 
