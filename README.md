@@ -1,6 +1,6 @@
-# Tauri + React + Typescript
+# Audio Lib
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+A library that loads recordbox xml files and classifies other files based on data learned from existing entries based on a neural network.
 
 ## Recommended IDE Setup
 
