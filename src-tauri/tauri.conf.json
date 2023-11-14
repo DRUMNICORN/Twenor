@@ -3,73 +3,42 @@
     "beforeDevCommand": "yarn dev",
     "beforeBuildCommand": "yarn build",
     "devPath": "http://localhost:1420",
-    "distDir": "../dist",
-    "withGlobalTauri": true
+    "distDir": "../dist"
+  },
+  "package": {
+    "productName": "wave-lib",
+    "version": "0.0.0"
   },
   "tauri": {
     "allowlist": {
-      "fs": {
-        "scope": ["*.mp3", "*.wav", "*.xml"]
-      },
-      "all": true,
+      "all": false,
       "shell": {
-        "sidecar": true,
-        "scope": [
-          {
-            "name": "explorer",
-            "cmd": "explorer",
-            "args": ["explorer", "%s"]
-          },
-
-          {
-            "name": "open",
-            "cmd": "open",
-            "args": ["open", "%s"]
-          }
-        ]
+        "all": false,
+        "open": true
       }
     },
     "bundle": {
-      "icon": ["../data/img/icon.ico"],
       "active": true,
-      "category": "DeveloperTool",
-      "copyright": "",
-      "deb": {
-        "depends": []
-      },
-      "identifier": "com.tauri.dev",
-      "longDescription": "",
-      "macOS": {
-        "entitlements": null,
-        "exceptionDomain": "",
-        "frameworks": [],
-        "providerShortName": null,
-        "signingIdentity": null
-      },
-      "resources": [],
-      "shortDescription": "",
       "targets": "all",
-      "windows": {
-        "certificateThumbprint": null,
-        "digestAlgorithm": "sha256",
-        "timestampUrl": ""
-      }
+      "identifier": "com.tauri.dev",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ]
     },
     "security": {
-      "csp": "default-src 'self'; media-src stream: https://stream.localhost"
-    },
-    "updater": {
-      "active": false
+      "csp": null
     },
     "windows": [
       {
-        "title": "Twenor Libary",
-        "resizable": true,
-        "decorations": false,
         "fullscreen": false,
-        "height": 600,
+        "resizable": true,
+        "title": "wave-lib",
         "width": 800,
-        "label": "main"
+        "height": 600
       }
     ]
   }
