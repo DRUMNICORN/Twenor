@@ -1,0 +1,67 @@
+// Waveform.module.scss
+.waveformContainer {
+
+    border-left: 5px solid var(--color-sub);
+    border-right: 5px solid var(--color-sub);
+
+    position: relative;
+    // width: 100%;
+    height: max-content;
+    cursor: pointer;
+    background-color: var(--color-secondary);
+
+    transition: height 0.3s ease-in-out;
+
+}
+
+
+.waveform {
+    border-left: 5px solid var(--color-sub);
+    border-right: 5px solid var(--color-sub);
+
+    position: relative;
+    // width: 100%;
+    height: max-content;
+    background-color: var(--color-secondary);
+    cursor: pointer;
+
+    transition: height 0.3s ease-in-out;
+
+}
+
+.waveformContainer:hover .currentTimeLine {
+    display: block;
+    /* Show the current time line when hovering over the waveform */
+}
+
+.currentTimeLine {
+
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 2px;
+    /* Customize the width of the current time line */
+    background-color: var(--color-primary);
+    /* Customize the color of the current time line */
+    pointer-events: none;
+    /* Make sure the current time line doesn't interfere with mouse events on the waveform bars */
+    /* Ensure the current time line is above the waveform bars */
+}
+
+// Add some styles for the AudioPlayer controls (play/pause button and time display)
+// Customize the appearance as needed
+.audioPlayer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.currentTimeDisplay {
+    font-size: 16px;
+    color: var(--color-sub);
+    margin: 0 10px;
+}

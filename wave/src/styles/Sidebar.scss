@@ -1,0 +1,44 @@
+@use "./Colors.scss" as pallet;
+
+.sidebar {
+  grid-area: sidebar;
+  flex-grow: 0;
+  flex-shrink: 0;
+  // min-width: 10em;
+  height: max-content;
+  margin-left: 1em;
+  // max-width: 99.5%;
+  display: flex;
+  border-right: pallet.alpha(pallet.$yang-color, 0.9) 3px solid;
+  flex-direction: row;
+  background: black !important;
+  z-index: 1;
+  text-align: center;
+
+}
+
+.sidebar-content {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  display: flex;
+  flex-direction: column;
+  // overflow: hidden;
+
+  
+  z-index: 1;
+}
+
+.resizebar:hover {
+  width: 3px;
+  background: pallet.alpha(pallet.$yang-color, 0.2);
+}
+
+.resizebar {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 6px;
+  justify-self: flex-end;
+  cursor: col-resize;
+  resize: horizontal;
+}

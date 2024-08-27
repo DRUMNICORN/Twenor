@@ -1,0 +1,228 @@
+@import 'Colors.scss';
+
+.navbar {
+  font-family: 'Manrope';
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $light-color;
+  box-shadow: $box-shadow;
+  padding: 1rem;
+  z-index: 1;
+
+  .navbarBrand {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: $dark-color;
+    text-decoration: none;
+    text-transform: uppercase;
+    line-height: 1.5;
+    transition: all 0.3s ease-in-out;
+
+    z-index: 1;
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+.navbarNav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+
+.navItem {
+  margin-left: 1rem;
+  list-style: none;
+}
+
+.navLink {
+  z-index: 1;
+  text-decoration: none;
+  color: $dark-color;
+  list-style: none;
+  transition: all 0.3s ease;
+}
+
+.navLink:hover {
+  color: $primary-color;
+}
+
+@media screen and (min-width: 768px) {
+  .navbarNav {
+    display: flex;
+  }
+}
+
+/* Add hamburger icon for small screens */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 22.5px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  .hamburger span {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: $dark-color;
+    border-radius: 2px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: all 0.25s ease-in-out;
+  }
+
+  .hamburger span:nth-child(1) {
+    top: 0;
+  }
+
+  .hamburger span:nth-child(2) {
+    top: 9px;
+  }
+
+  .hamburger span:nth-child(3) {
+    top: 18px;
+  }
+
+  .hamburger.show {
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 22.5px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  .hamburger.show span {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    // background: #333;
+    border-radius: 2px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: all 0.25s ease-in-out;
+  }
+
+  .hamburger.show span:nth-child(1) {
+    top: 9px;
+    transform: rotate(45deg);
+  }
+
+  .hamburger.show span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.show span:nth-child(3) {
+    top: 9px;
+    transform: rotate(-45deg);
+  }
+
+  .navbarNav {
+    display: flex;
+    // dont display the navbar but dont use display none
+    // because we want to use it for the transition
+    position: absolute;
+    flex-direction: column;
+
+    // gradiant background
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    transition: left 0.3s ease;
+    left: 100%;
+    top: 0;
+    padding-top: 4rem;
+    width: 40%;
+    overflow: hidden;
+    height: fit-content;
+    padding-bottom: 1rem;
+  }
+
+  .navbarNav.show {
+    z-index: 900;
+    left: 60%;
+    transition: left 0.3s ease;
+  }
+
+  .navbarNav.show li a {
+    font-size: 2rem;
+    padding-right: 1rem;
+
+    font-weight: bold;
+    color: $dark-color;
+    text-decoration: none;
+    // all capital letters
+    text-transform: uppercase;
+    // center text
+    text-align: right;
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    text-align: right;
+    background: linear-gradient();
+
+    box-shadow: $box-shadow;
+    padding: 1rem;
+  }
+
+  // cricle throw the rotation of the abckground infitit
+  //animation
+
+  // animate the background color
+  .navbar.show {
+    transition: background-color 0.3s ease;
+  }
+
+  .navbarBrand {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: $dark-color;
+    text-decoration: none;
+    text-transform: uppercase;
+    line-height: 1.5;
+    transition: all 0.3s ease-in-out;
+    // text-align: right;
+
+    &:hover {
+      color: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  .navItem {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: 3rem;
+    border-bottom: 0.3px solid $dark-color;
+    left: 0;
+    transition: all 0.3s ease;
+
+    background-color: $light-color;
+  }
+
+  .navLink {
+    text-decoration: none;
+    color: $dark-color;
+    list-style: none;
+    transition: all 0.3s ease;
+  }
+
+  .navLink:hover {
+    color: $primary-color;
+  }
+}

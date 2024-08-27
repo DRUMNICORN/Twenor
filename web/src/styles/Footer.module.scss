@@ -1,0 +1,77 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background-color: var(--light-color);
+  box-shadow: var(--box-shadow);
+  padding: 0.42rem;
+  height: 10%;
+  z-index: 1;
+
+  &__left {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    &__resume {
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 1.42rem;
+      font-weight: 500;
+
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.5rem;
+
+    .link {
+      margin-left: 1rem;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  // will be altantive footer and simple a section in the center of the footer where all icons will be displayed
+  // make it have left and right same distance, it should be in the center
+  &__center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-right: 3rem;
+    padding-left: 3rem;
+  } 
+}
+
+.link {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+
+  padding: 0.5rem;
+
+  &:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+  }
+
+  width: 2rem;
+  height: 2rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .link {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+}

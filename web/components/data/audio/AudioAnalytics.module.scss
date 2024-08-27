@@ -1,0 +1,94 @@
+.wrapper {
+    height: 100%;
+    transition: height 0.42s ease, width 0.42s ease;
+    // background: rgba(var(--color-primary-rgb-true), 0.1);
+    // gradient background
+    background: linear-gradient(90deg, rgba(var(--color-secondary-rgb-true), 0.1) 0%, rgba(var(--color-primary-rgb-true), 0.1) 50%, rgba(var(--color-primary-rgb-true), 0.1) 100%);
+    border-left: 2px solid var(--color-sub);
+    border-right: 2px solid var(--color-sub);
+    padding-top: 0.69rem;
+    position: relative;
+    /* Add this */
+    transform-origin: left center;
+    /* Center transform on the left side */
+}
+
+.container {
+    height: auto;
+    color: var(--color-sub);
+    transition: height 0.42s ease, width 0.42s ease;
+    width: 100%;
+    padding: 0em 0.42em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+    }
+}
+
+.active {
+    width: 100%;
+    height: 5rem;
+    transition: height 0.42s ease 0.42s, width 0.42s ease;
+    /* Add delay */
+
+    .wrapper {
+        width: 100%;
+        left: 0;
+        /* Add this */
+        transform-origin: left center;
+        /* Center transform on the left side */
+    }
+
+    .timeDisplay {
+        height: 4.2em;
+        transform: translateY(0);
+        /* Add this */
+        transform-origin: left center;
+        /* Center transform on the left side */
+    }
+}
+
+.inactive {
+    width: 0;
+    height: 0rem;
+    transition: height 0.42s ease, width 0.42s ease;
+    /* Remove delay */
+
+    .wrapper {
+        width: 0;
+        left: 50%;
+        /* Center the .wrapper */
+        transform: translateX(-50%);
+        /* Center the .wrapper */
+        transform-origin: left center;
+        /* Center transform on the left side */
+    }
+
+    .timeDisplay {
+        height: 0;
+        transform: translateY(-50%);
+        /* Center the .timeDisplay */
+        transform-origin: left center;
+        /* Center transform on the left side */
+    }
+}
+
+.timeDisplay {
+    position: absolute;
+    /* Use absolute positioning */
+    top: 100%;
+    /* Position it below the .wrapper */
+    width: 0;
+    left: 0;
+    /* Change left to 0 */
+    /* Center it horizontally */
+    background-color: var(--color-light);
+    z-index: 4;
+}

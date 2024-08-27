@@ -1,0 +1,45 @@
+.mt4 {
+    margin-top: 1rem;
+}
+
+.formcheck {
+    display: block;
+    margin-bottom: 0.125rem;
+    min-height: 1.8rem;
+    padding-left: 3.25rem;
+}
+
+.formchecklabel {
+    display: inline-block;
+    font-size: 0.875rem;
+}
+
+.formcheckinput {
+    margin: 0px;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    border: 0px;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-size: contain;
+    print-color-adjust: exact;
+    vertical-align: top;
+    float: left;
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+    border-radius: 2.5rem;
+    transition: background-position 0.15s ease-in-out 0s;
+    width: 2.5rem;
+    height: 1.5rem;
+    margin-top: calc(0.8em - 0.75rem);
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%23fff'/%3E%3C/svg%3E");
+}
+
+#UseBestModel {
+    background-position: 0px center;
+}
+
+#BasicSearch {
+    background-position: 100% center;
+}

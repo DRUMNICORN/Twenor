@@ -1,0 +1,23 @@
+.content {
+  grid-area: main;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  // min-width: 20em;
+
+  // margin: 2em;
+  z-index: 5 !important;
+
+  // disable scrolling
+  // overflow: hidden;
+}
+
+.content > .content-wrapper {
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-top: 2em;
+  height: 100%;
+  
+  z-index: 5 !important;
+}

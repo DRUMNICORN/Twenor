@@ -1,0 +1,25 @@
+// UserInfo.module.scss
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .name {
+    font-size: 1em;
+    color: #FFF;
+  }
+  
+  .button {
+    padding: 5px 10px;
+    border: #fff solid 1px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9em;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  

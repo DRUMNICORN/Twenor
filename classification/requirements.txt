@@ -1,0 +1,8 @@
+joblib==1.1.0
+keras==2.8.0
+librosa==0.9.1
+mutagen==1.45.1
+numpy==1.22.3
+pandas==1.4.2
+PyInstaller==5.0.1
+PySide2==5.15.2.1
