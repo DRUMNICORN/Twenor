@@ -1,0 +1,41 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+
+  background-color: var(--color-add);
+  color: var(--color-sub);
+}
+
+.title {
+  font-size: 36px;
+  color: var(--color-sub);
+  margin-bottom: 20px;
+  animation: fadeInDown 1s ease-in-out;
+}
+
+@keyframes fadeInDown {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.link {
+  font-size: 20px;
+  color: var(--color-sub);
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.link:hover {
+  color: var(--color-secondary);
+}

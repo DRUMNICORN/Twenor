@@ -1,0 +1,19 @@
+{
+    "files.exclude": {
+        "**/.git": false,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true
+    },
+    "explorerExclude.backup": null,
+    "python.defaultInterpreterPath": "D:/Devtools/miniconda/envs/prediction_env/python.exe",
+    "python.languageServer": "Pylance",
+    "python.autoComplete.extraPaths": [
+        "D:/Devtools/miniconda/envs/prediction_env/python.exe"
+    ],
+    "python.analysis.extraPaths": [
+        "D:/Devtools/miniconda/envs/prediction_env/python.exe"
+    ],
+}

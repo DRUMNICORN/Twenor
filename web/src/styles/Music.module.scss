@@ -1,0 +1,73 @@
+@import 'Colors.scss';
+
+.container {
+  font-family: 'Manrope';
+  height: 100vh;
+}
+
+.content {
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // justify-content: center;
+  height: 100%;
+
+  // Set the height to 100% of the viewport height
+  // height: 90vh;
+
+  // Set overflow to auto to enable scrolling
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  // scroll bar
+  scrollbar-width: thin;
+  scrollbar-color: $text-color $light-color;
+
+  // height: 80% in mobile
+  @media screen and (max-width: 768px) {
+    height: 70%;
+  }
+
+  // height: 90% in tablet
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    height: 80%;
+  }
+
+  // height: 100% in desktop
+  @media screen and (min-width: 1024px) {
+    height: 90%;
+  }
+}
+
+// blur video too
+
+.video {
+  width: 100%;
+  // center the video
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  // max-width: calc(80vw / 4);
+  padding-top: 2rem;
+  opacity: 0.8;
+  transition: all 0.2s ease-in-out;
+  filter: blur(0.1rem);
+  border-radius: 0.5rem;
+
+  &:hover {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1.02);
+  }
+
+  padding-bottom: 5rem;
+}
+
+.playing {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1.02);
+}

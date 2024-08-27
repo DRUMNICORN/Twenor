@@ -1,0 +1,22 @@
+.beatGrid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: max-content;
+    padding: 0 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+    z-index: 100 !important;
+    transition: height 0.3s ease-in-out;
+}
+
+.beat {
+    // Base bar styles
+    position: absolute;
+    width: 0.1vw;
+    border: 1px solid var(--color-ligth);
+    height: 100%;
+    background: var(--color-add);
+}

@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../www"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../processing"
+		}
+	],
+	"settings": {}
+}

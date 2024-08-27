@@ -1,0 +1,57 @@
+.header {
+  font-family: 'Manrope';
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--light-color);
+  box-shadow: var(--box-shadow);
+  padding: 1rem;
+  z-index: 1;
+  height: 10%;
+  margin-top: 0;
+
+  .headerBrand {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--dark-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    line-height: 1.5;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+}
+
+.headerNav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+
+  .navItem {
+    margin-left: 1rem;
+    list-style: none;
+  }
+
+  .navLink {
+    z-index: 1;
+    text-decoration: none;
+    color: var(--dark-color);
+    list-style: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .headerNav {
+    display: flex;
+  }
+}

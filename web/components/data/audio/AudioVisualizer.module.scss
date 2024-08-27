@@ -1,0 +1,151 @@
+// Audio.module.scss
+.audioContainer {
+
+    position: relative;
+    // width: 100%;
+    height: max-content;
+    cursor: pointer;
+    background-color: transparent;
+
+    transition: height 0.3s ease-in-out;
+
+}
+
+
+.audio {
+
+    position: relative;
+    // width: 100%;
+    height: max-content;
+    background-color: transparent;
+    cursor: pointer;
+
+    transition: height 0.3s ease-in-out;
+
+}
+
+.audioContainer:hover .currentTimeLine {
+    display: block;
+    /* Show the current time line when hovering over the audio */
+}
+
+.currentTimeLine {
+
+    display: none;
+    position: absolute;
+    bottom: 0;
+    width: 2px;
+    z-index: 1 !important;
+    height: 5rem;
+    /* Customize the width of the current time line */
+    background-color: var(--color-primary);
+    /* Customize the color of the current time line */
+    pointer-events: none;
+    /* Make sure the current time line doesn't interfere with mouse events on the audio bars */
+    /* Ensure the current time line is above the audio bars */
+}
+
+// Add some styles for the AudioPlayer controls (play/pause button and time display)
+// Customize the appearance as needed
+.audioPlayer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.currentTimeDisplay {
+    font-size: 16px;
+    color: var(--color-sub);
+    margin: 0 10px;
+}
+
+/* Styles for audio container */
+.audioContainer {
+    width: 99%;
+    position: relative;
+    left: 0.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    font-family: var(--font-family);
+
+    /* Adjust as needed */
+    overflow: hidden;
+    // background-color: var(--color-add)z-index: 6;;
+
+    /* Adjustable background color */
+}
+
+/* Styles for audio bars */
+.audio {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* Styles for individual audio bar */
+.bar {
+    position: absolute;
+    bottom: 0;
+    width: 2%;
+    /* Adjust as needed */
+    background-color: var(--color-primary);
+    /* Adjustable bar color */
+}
+
+/* Styles for progress bar */
+.progressBar {
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    background-color: var(--color-seccundary);
+    /* Adjustable progress bar color */
+}
+
+.audioWrapper {
+    border-top-left-radius: 42px;
+    border-top-right-radius: 42px;
+    border: 5px solid var(--color-sub);
+    background-color: var(--color-add);
+    height: 100%;
+    width: 100%;
+}
+
+
+/* CSS */
+.sceneDisplay {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sceneDisplayBackground {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--color-add);
+}
+
+.sceneDisplayName {
+    // all caps
+    text-transform: uppercase;
+    position: relative;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--color-add);
+}
+
+.sceneDisplayWrapper {
+    height: 0vh;
+    overflow: hidden;
+}

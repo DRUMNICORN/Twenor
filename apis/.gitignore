@@ -1,0 +1,7 @@
+target/
+Cargo.lock
+.aider.chat.history.md
+.aider.input.history
+.db
+.temp
+.env

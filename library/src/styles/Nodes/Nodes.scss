@@ -1,0 +1,85 @@
+@use "./../tools/ColorPallet.scss" as pallet;
+
+@use "./elements/Extra";
+@use "./elements/Node";
+@use "./elements/New";
+@use "./elements/Logo";
+
+// .selected-node {
+//   border: 0px solid pallet.$color-primary;
+//   border-radius: 0.5em;
+//   background-color: pallet.$yang-color;
+//   color: pallet.$yin-color;
+//   cursor: pointer;
+//   border-radius: 0.5em;
+//   background-color: pallet.alpha(pallet.$yang-color, 0.9);
+//   color: pallet.$yin-color;
+// }
+
+// Animations
+@keyframes width_anim {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 20%;
+    // dont let text overflow
+    overflow: hidden;
+    // more overflow hidden on the right
+  }
+}
+@keyframes undercover {
+  0% {
+    background-color: pallet.$color-primary;
+  }
+  100% {
+    background-color: pallet.alpha(pallet.$color-primary, 0.2);
+  }
+}
+
+@keyframes arrow_rotate {
+  from {
+    transform: rotate(90deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes border_apparition {
+  0% {
+    background-size: 1.5em;
+
+    filter: invert(50%);
+  }
+  100% {
+    background-size: 1.8em;
+    filter: invert(100%);
+  }
+}
+
+.explorer {
+  color: pallet.$yang-color;
+  padding-left: 1em;
+  height: 100%;
+}
+
+.dragging-folder .explorer {
+  background-color: pallet.alpha(pallet.$color-primary, 0.2);
+}
+
+.left {
+  float: left;
+  width: 80%;
+}
+.right {
+  margin-left: auto;
+  width: 10%;
+}
+
+.node-list {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  width: auto;
+}

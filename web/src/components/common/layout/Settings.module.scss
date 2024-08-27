@@ -1,0 +1,132 @@
+.settings {
+    /* Common styles for both mobile and desktop */
+    position: relative;
+    background-color: var(--color-add);
+    color: var(--color-sub);
+    padding: 10px;
+    top: -5px;
+    font-family: var(--font-family);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 2px solid var(--color-sub);
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.settingsInside {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 10px;
+}
+
+.settingsRow {
+    display: flex;
+    align-items: center;
+    /* Add hover effect */
+    transition: background-color 0.3s ease;
+}
+
+.settingsRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.settingsRow:hover {
+    background-color: var(--color-sub-light);
+}
+
+.settingsKey {
+    color: var(--color-sub);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    padding-right: 10px;
+    margin-right: 10px;
+    font-size: 50%;
+    width: 0px;
+    height: 0px;
+    position: relative;
+    top: -50%;
+    left: 8%;
+
+    transform: translate(4px, -50%);
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.settingsValue {
+    padding-top: 12px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.settingsValue input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid var(--color-sub);
+    background-color: var(--color-sub);
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+    /* Additional styles for the input field */
+    outline: none;
+    transition: border-color 0.3s ease;
+    color: var(--color-light);
+    background-color: var(--color-dark);
+}
+
+.settingsValue input::placeholder {
+    /* Customize the input placeholder styles */
+    color: var(--color-add);
+
+    opacity: 0.7;
+}
+
+.settingsValue input:focus {
+    /* Customize the input styles when focused */
+    border-color: var(--color-add);
+}
+
+.lyricsRow {
+    grid-column: 1 / -1;
+
+}
+
+.lyricsInput {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    // text top left
+    text-align: left;
+    vertical-align: top;
+    // text color
+    color: var(--color-add);
+}
+
+
+.lyricsInput {
+    width: 100%;
+    height: 150px; // New height
+    resize: none;
+    text-align: left;
+    vertical-align: top;
+    color: var(--color-add); // New text color
+    background-color: var(--color-dark);
+    border: none; // New border color
+    box-shadow: none;
+    border: 1px solid var(--color-sub);
+    border-radius: 5px;
+    color: var(--color-light);
+    padding: 8px;
+}
+
+.lyricsRow .settingsKey {
+    text-align: left;
+    vertical-align: top;
+    height: 100%;
+    top: 46%;
+    left: 1.4rem;
+}

@@ -1,0 +1,174 @@
+.scenesContainer {
+    /* Add styles for the scenes container */
+    display: flex;
+    // flex-wrap: nowrap;
+    /* This prevents the scenes from wrapping to multiple lines */
+    overflow-x: auto;
+    /* Add horizontal scroll when the scenes exceed the container width */
+    // max-width: 100vw;
+    width: 100%;
+
+}
+
+.scene {
+    // /* Add styles for each scene */
+    // align-items: center;
+    background-color: var(--color-add);
+    // padding: 8px;
+    // cursor: pointer;
+    border: 2px solid var(--color-sub);
+    height: 1em;
+    // transition: background-color 0.3s ease;
+
+    // not selectable
+
+}
+
+.scene:hover {
+    /* Add hover effect */
+    background-color: var(--color-sub);
+    border: 2px solid var(--color-add);
+}
+
+// more hover of others
+.scene:hover .sceneName {
+    color: var(--color-light);
+}
+
+.scene:hover .sceneDescription {
+    color: var(--color-light);
+}
+
+
+.sceneThumbnail {
+    /* Add styles for the scene thumbnail container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 4px;
+
+    & img {
+        /* Add styles for the scene thumbnail image */
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    // reisze the image
+
+    transition: width 0.3s ease;
+
+    //change width to 100px
+
+    color: var(--color-add);
+    // no text wrap
+    white-space: nowrap;
+    // all capital letters
+    text-transform: uppercase;
+    // inside the sceneThumbnail padding 5px
+    padding: 5px;
+    // center the text
+    text-align: center;
+    vertical-align: middle;
+    font-size: 12px;
+
+}
+
+.sceneImage {
+    /* Add styles for the scene image */
+    width: 2rem;
+    height: 2rem;
+}
+
+.sceneInfo {
+    height: 1em;
+    /* Add styles for the scene information */
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    padding: 0 10px;
+    border-radius: 5px;
+    width: 100%;
+    border: 2px solid var(--color-add);
+    // no border top
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border-top: none;
+    padding-bottom: 0.5em;
+
+    min-height: 3.5em;
+
+    // center the text
+    text-align: center;
+    vertical-align: middle;
+}
+
+.sceneName {
+    height: 2em;
+    /* Add styles for the scenemin-height: 3.5em; name */
+    font-size: 0.42em;
+    font-weight: bold;
+    filter: invert(100%);
+    // no wrap
+    white-space: nowrap;
+
+    // center the text
+    text-align: center;
+    vertical-align: middle;
+    user-select: none; // center the text
+    text-align: center;
+    vertical-align: middle;
+
+    // all capital letters
+    text-transform: uppercase;
+
+
+}
+
+.sceneInfoDescription {
+    /* Add styles for the scene description */
+    font-size: 14px;
+    color: var(--color-light);
+}
+
+.sceneInfoTitle {
+    /* Add styles for the scene title */
+    font-size: 14px;
+    color: var(--color-light);
+
+    // no wrap
+    white-space: nowrap;
+
+    // more style
+    font-weight: bold;
+    // center the text
+    text-align: center;
+    vertical-align: middle;
+    // all capital letters
+    text-transform: uppercase;
+
+    // padding: 5px;
+}
+
+.selectedScene {
+    /* Add styles for the selected scene */
+    background-color: var(--color-sub);
+    border: 2px solid var(--color-primary);
+}
+
+.resizeBar {
+    /* Add styles for the resize bar */
+    background-color: var(--color-dark);
+    cursor: col-resize;
+    border: 0.05em solid #f00;
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+
+    // draggble overwriting !important
+
+    z-index: 8;
+
+}

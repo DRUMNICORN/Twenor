@@ -1,0 +1,52 @@
+// fontFamily: 'Manrope', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '1em', height: '20vh', color: '#fff', padding: '1em', backgroundColor: '#000', borderRadius: '1em', boxShadow: '0 0 1em #000'
+@import 'Colors.scss';
+.bio {
+  font-family: 'Manrope';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  color: $text-color;
+  padding: 1em;
+  border-radius: 1em;
+  height: min-content;
+
+  // box-shadow: 0 0 1em #000;
+}
+
+.bio > a {
+  color: $text-color;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+.bio > h1 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: $dark-color;
+  text-decoration: none;
+  text-transform: uppercase;
+  line-height: 1.5;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+.bio > p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  width: 80%;
+  color: $dark-color;
+  text-decoration: none;
+  // text-transform: uppercase;
+  line-height: 1.5;
+  transition: all 0.3s ease-in-out;
+}

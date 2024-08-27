@@ -1,0 +1,36 @@
+.container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr; /* Change to a single column layout on mobile */
+    grid-template-rows: auto auto; /* Set rows to auto to accommodate waveform and controls */
+  }
+}
+
+.videoPanel {
+  grid-column: 1 / 3;
+}
+
+.videoPlayer {
+  width: 100%;
+}
+
+.waveformPanel {
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.controlsPanel {
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.fileInput {
+  margin-top: 20px;
+}

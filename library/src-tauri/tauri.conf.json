@@ -1,0 +1,81 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/schema.json",
+  "build": {
+    "beforeBuildCommand": "",
+    "beforeDevCommand": "",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist",
+    "withGlobalTauri": true
+  },
+  "package": {
+    "productName": "TwenorLibary",
+    "version": "0.1.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "fs": {
+        "scope": ["*.mp3", "*.wav", "*.xml"]
+      },
+      "all": true,
+      "shell": {
+        "sidecar": true,
+        "scope": [
+          {
+            "name": "explorer",
+            "cmd": "explorer",
+            "args": ["explorer", "%s"]
+          },
+
+          {
+            "name": "open",
+            "cmd": "open",
+            "args": ["open", "%s"]
+          }
+        ]
+      }
+    },
+    "bundle": {
+      "icon": ["../data/img/icon.ico"],
+      "active": true,
+      "category": "DeveloperTool",
+      "copyright": "",
+      "deb": {
+        "depends": []
+      },
+      "identifier": "com.tauri.dev",
+      "longDescription": "",
+      "macOS": {
+        "entitlements": null,
+        "exceptionDomain": "",
+        "frameworks": [],
+        "providerShortName": null,
+        "signingIdentity": null
+      },
+      "resources": [],
+      "shortDescription": "",
+      "targets": "all",
+      "windows": {
+        "certificateThumbprint": null,
+        "digestAlgorithm": "sha256",
+        "timestampUrl": ""
+      }
+    },
+    "security": {
+      "csp": "default-src 'self'; media-src stream: https://stream.localhost"
+    },
+    "updater": {
+      "active": false
+    },
+    "windows": [
+      {
+        "title": "Twenor Libary",
+        "resizable": true,
+        "decorations": false,
+        "fullscreen": false,
+        "height": 600,
+        "width": 800,
+        "label": "main"
+      }
+    ]
+  }
+}

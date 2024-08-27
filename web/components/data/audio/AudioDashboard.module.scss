@@ -1,0 +1,115 @@
+/* Styling for the dashboard container */
+.dashboard {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: var(--color-dark);
+    padding: 1rem;
+    border: 3px solid var(--color-sub);
+    border-top: none;
+    border-bottom: none;
+    gap: 16px;
+    /* Add spacing between items */
+
+    /* Use CSS Grid for the container with auto-fill columns */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(calc(33.33% - 16px), 1fr));
+    /* Default: 3 columns */
+
+    padding-bottom: 4rem;
+
+    border-bottom-left-radius: 42%;
+    border-bottom-right-radius: 42%;
+}
+
+/* Styling for the white spacing element between buttons */
+.dashboardStylingElement {
+    background-color: var(--color-add);
+    height: 0.96rem;
+    border-top: 2px solid var(--color-sub);
+    border-bottom: 2px solid var(--color-sub);
+    margin-bottom: 0.42rem;
+}
+
+.dashboardButtonDownloading {
+    border: 2px solid var(--color-sub);
+    // with animation
+    animation: pulse 1s infinite !important;
+}
+
+@keyframes pulse {
+    0% {
+        border: 2px solid var(--color-sub);
+    }
+
+    50% {
+        border: 2px solid var(--color-add);
+    }
+
+    100% {
+        border: 2px solid var(--color-sub);
+    }
+}
+
+.dashboardButtonWrapper {
+    position: relative;
+    top: 0;
+    width: 100%;
+}
+
+.dashboardButton {
+    flex: 0 0 calc(33.33% - 16px);
+    background-color: var(--color-add);
+    margin: 0.5rem;
+    padding: 0.4rem 0.1rem;
+    padding-right: 0.5rem;
+    border: 2px solid var(--color-add);
+    border-radius: 4px;
+    transition: background-color 0.3s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: border 0.3s ease-in-out;
+}
+
+.dashboardButtonControl {
+    position: absolute;
+    right: 0.2rem;
+    justify-content: center;
+    align-items: center;
+    height: 1rem;
+    width: 1rem;
+}
+
+/* Styling for the audio button titles */
+.dashboardButtonTitle {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* Styling for the audio button states */
+
+/* Hover effect for audio buttons */
+.dashboardButton:hover {
+    background-color: var(--color-add-hover);
+    color: var(--color-add);
+    box-shadow: var(--shadow);
+}
+
+/* Media query for mobile devices */
+@media (max-width: 767px) {
+    .dashboard {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+        /* Single column for mobile */
+    }
+}
+
+.dashboardButtonControlDownload {
+    //translate to its center rotate and translate back
+    transform: translate(50%, 50%) rotate(180deg);
+    transition: transform 0.3s ease-in-out;
+}

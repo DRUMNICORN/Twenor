@@ -1,0 +1,340 @@
+@use 'sass:math';
+// Colors.scss
+@import 'Colors.scss';
+
+// try to achive a minimalistic design with a lot of white space
+// use a lot of white space
+
+$red: rgba(255, 0, 0, 0.75);
+$orange: rgba(255, 127, 0, 0.75);
+$yellow: rgba(255, 255, 0, 0.75);
+$chartreuse: rgba(127, 255, 0, 0.75);
+$green: rgba(0, 255, 0, 0.75);
+$springgreen: rgba(0, 255, 127, 0.75);
+$cyan: rgba(0, 255, 255, 0.75);
+$turquoise: rgba(0, 127, 127, 0.75);
+$blue: rgba(0, 0, 255, 0.75);
+$violet: rgba(127, 0, 255, 0.75);
+$magenta: rgba(255, 0, 255, 0.75);
+$pink: rgba(255, 0, 127, 0.75);
+
+.red {
+  background-color: $red;
+}
+
+.orange {
+  background-color: $orange;
+}
+
+.yellow {
+  background-color: $yellow;
+}
+
+.chartreuse {
+  background-color: $chartreuse;
+}
+
+.green {
+  background-color: $green;
+}
+
+.springgreen {
+  background-color: $springgreen;
+}
+
+.cyan {
+  background-color: $cyan;
+}
+
+.turquoise {
+  background-color: $turquoise;
+}
+
+.blue {
+  background-color: $blue;
+}
+
+.violet {
+  background-color: $violet;
+}
+
+.magenta {
+  background-color: $magenta;
+}
+
+.pink {
+  background-color: $pink;
+}
+
+.title {
+  // left: 50%;
+  // top: -20%;
+  color: #000505;
+  position: relative;
+
+  // center the text vertically and horizontally
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: 'Manrope';
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.5;
+  transition: all 0.3s ease-in-out;
+  // make it always 2 lines
+  height: 3rem;
+  top: 33%;
+  animation: text-anim 1s ease-in-out infinite;
+}
+
+$intensity: 0.42;
+
+@keyframes text-anim {
+  0% {
+    transform: translate(0, 0) rotate(-2deg * $intensity);
+  }
+  25% {
+    transform: translate(0, -10px * $intensity) rotate(2deg * $intensity);
+  }
+  50% {
+    transform: translate(0, 0) rotate(-2deg * $intensity);
+  }
+  75% {
+    transform: translate(0, 10px * $intensity) rotate(2deg * $intensity);
+  }
+  100% {
+    transform: translate(0, 0) rotate(-2deg * $intensity);
+  }
+}
+
+// .container {
+//   position: relative;
+//   font-family: 'Manrope';
+//   height: 80%;
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// } make more minimalistic
+
+.container {
+  position: relative;
+  font-family: 'Manrope';
+  top: 10%;
+  height: 80%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // translate the wheel to the center
+  transform: translate(0, -10%);
+  // set inxe
+  z-index: 0;
+}
+
+.wheel {
+  position: relative;
+  width: 30vh;
+  height: 30vh;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.wheel__slice {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-origin: center center;
+  border-radius: 50%;
+  transform-origin: center center;
+  transition: transform 0.1s ease-in-out;
+  // background-color: #0000;
+  color: #0000;
+  border: 0.3em solid $dark-color;
+}
+
+.wheel__center {
+  border-radius: 50%;
+  background-color: #fdfff0;
+  position: absolute;
+  transform-origin: center center;
+  width: 30%;
+  height: 30%;
+  top: 35%;
+  left: 35%;
+  transition: all 0.1s ease-in-out;
+  color: #000505;
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 1.5;
+
+  @media (max-width: 768px) {
+    width: 30%;
+    height: 30%;
+    top: 35%;
+    left: 35%;
+  }
+
+  @media (max-width: 480px) {
+    width: 40%;
+    height: 40%;
+    top: 30%;
+    left: 30%;
+  }
+
+  @media (max-width: 320px) {
+    width: 50%;
+    height: 50%;
+    top: 25%;
+    left: 25%;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.wheel__center.active {
+  transform: scale(0.75);
+}
+
+.wheel__center:hover {
+  background-color: #fdfff0;
+  transform: scale(1.1);
+}
+
+@mixin slice-styles($slices) {
+  @for $i from 1 through $slices {
+    $slice-angle: 360deg / $slices;
+
+    // use Colors red, orange, yellow ... etc
+    .wheel__slice:nth-child(#{$i}) {
+      $center-x: 50%;
+      $center-y: 50%;
+      $x1: 0%;
+      $y1: 0%;
+      $x2: 0%;
+      $y2: 0%;
+
+      $radius: 300%;
+
+      $angle: $i * $slice-angle;
+      $x1: math.sin($angle) * $radius + $center-x;
+      $y1: math.cos($angle) * $radius + $center-y;
+      $x2: math.sin($angle + $slice-angle) * $radius + $center-x;
+      $y2: math.cos($angle + $slice-angle) * $radius + $center-y;
+
+      clip-path: polygon(50% 50%, $x1 $y1, $x2 $y2);
+      // opacity: 0;
+      transition: opacity 0.5s ease;
+
+      transition: all 0.3s ease;
+    }
+
+    .wheel__slice {
+      transition: all 0.3s ease;
+    }
+
+    .wheel__slice:nth-child(n + 1) {
+      // animation: fade-in 0.5s ease forwards;
+      // animation: randomSegment 10s linear infinite; use random offset for each slice to make it look like it's spinning randomly
+      transition: all 0.3s ease, opacity 1s ease;
+      // animation: randomSegment 10s linear infinite;
+      // transform: scale(1);
+    }
+
+    .wheel__slice:nth-child(#{$i}):hover {
+      // background-color: $light-color;
+      // transform: scale(1.5);
+      opacity: 0.9;
+      transition: all 0.3s ease;
+    }
+
+    .wheel__slice:nth-child(#{$i}):active {
+      // background-color: $light-color;
+      // transform: scale(1.5);
+      opacity: 0.9;
+      // animation: expand-transfrom-to-one-six-out 0.5s ease forwards;
+      transition: all 0.3s ease;
+    }
+  }
+}
+.wheel__slice.active {
+  background-color: $light-color;
+  transition: fade_size_in_and_out 1.5s ease forwards;
+  animation: fade_size_in_and_out 1.5s ease forwards;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+@keyframes randomSegment {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes expand-transfrom-to-one-six-out {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes expand-transfrom-to-one-six {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes fade_size_in_and_out {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.6);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.wheel__slice--3 {
+  @include slice-styles(3);
+}
+
+.wheel__slice--6 {
+  @include slice-styles(6);
+}
+
+.wheel__slice--12 {
+  @include slice-styles(12);
+}

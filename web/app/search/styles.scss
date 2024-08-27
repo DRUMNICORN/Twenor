@@ -1,0 +1,74 @@
+// styles.scss
+.search-page {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--color-background);
+    color: var(--color-sub);
+}
+
+.canvas {
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-background);
+    display: block;
+}
+
+.container {
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    width: 65vh;
+}
+
+.heading {
+    box-sizing: border-box;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    font-family: "DM Sans", sans-serif;
+    text-transform: uppercase;
+}
+
+.placeholder {
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    background-color: currentcolor;
+    cursor: wait;
+    display: inline-block;
+    opacity: 0.5;
+    vertical-align: middle;
+    min-height: 0.8em;
+    position: relative;
+    animation: 2s ease-in-out 0s infinite normal none running placeholder-glow;
+}
+
+.colContainer {
+    box-sizing: border-box;
+    position: relative;
+    margin-top: 1rem;
+}
+
+html {
+    box-sizing: border-box;
+    overflow-x: hidden;
+    background-color: var(--color-background);
+    color: var(--color-sub);
+    color-scheme: dark;
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: "DM Sans", sans-serif;
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.6;
+    background-color: var(--color-sub);
+    color: var(--color-sub);
+}
