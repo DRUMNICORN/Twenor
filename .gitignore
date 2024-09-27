@@ -1,9 +1,0 @@
-target/
-Cargo.lock
-.db
-.temp
-.env
-.env.local
-processing/py/buffers/id.wav
-*.log
-.crt

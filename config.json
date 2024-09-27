@@ -1,0 +1,40 @@
+{
+    "audio_file_path": "F:\\Audio\\Ableton\\#OUTTHERE\\Game\\deserve.mp3",
+    "topic": "NO SLEEP: Manipulation, and Relationships with Drugs, Alcohol, and Addiction",
+    "artstyle": "landscape and city of tokio at night, use colors, shapes, and patterns to create a unique visual style, and use a variety of camera angles and movements to create a unique visual style",
+    "audio_config": {
+        "sample_rate": 22050,
+        "beats_per_bar": 16,
+        "offset": 0.2,
+        "threshold": 0.3,
+        "detail": 6,
+        "max_repetition": 2
+    },
+    "script_prompts": {
+        "INSTRUCTION": "[INSTRUCTION]",
+        "BASE_PROMPT": "Write a music video script based on the following track information.",
+        "DIRECTOR_PROMPT": "Act as a director and create a script for a music video based on the given track information.",
+        "GOAL_PROMPT": "Write an interesting and engaging script.",
+        "OUTPUT_FORMAT_PROMPT": "Output a JSON array of scenes in the following format:",
+        "TOPIC_GUIDANCE_PROMPT": "Use the following track information as guidance and follow the instructions below:",
+        "EXAMPLE_SCENE": {
+            "script": {
+                "title": "...",
+                "description": "..."
+            },
+            "scenes": [
+                {
+                    "scene_id": 0,
+                    "scene_title": "...",
+                    "scene_description": "...",
+                    "scene_tags": [
+                        "...",
+                        "...",
+                        "..."
+                    ],
+                    "scene_color": "#..."
+                }
+            ]
+        }
+    }
+}
